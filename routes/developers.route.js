@@ -7,6 +7,6 @@ module.exports = function(app){
   app.get('/view-job', method.viewDevelopers);
   app.get('/view-job/:_id', method.viewOneDeveloper);
   app.put('/update-job/:_id', method.updateDeveloper);
-  app.delete('/delete-job', method.deleteJobs);
-  app.delete('/delete-job/:_id', method.deleteOneJob);
+  app.delete('/delete-job', method.deleteDevelopers);
+  app.delete('/delete-job/:_id', method.deleteOneDeveloper);
 };

@@ -48,7 +48,7 @@ exports.deleteDevelopers = function(req, res){
     res.json(developers);
   });
 };
-exports.deleteOneUser = function(req, res){
+exports.deleteOneDeveloper = function(req, res){
   Developer.remove({
     _id: req.params._id
   }, function(err, developer){
