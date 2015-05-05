@@ -1,0 +1,30 @@
+{
+  "name": "Freelance-Application",
+  "version": "1.0.0",
+  "description": "An application for developers to view and post jobs",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andela-kochu/freelance.git"
+  },
+  "keywords": [
+    "Freelance"
+  ],
+  "author": "Kingsley Ochu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-kochu/freelance/issues"
+  },
+  "homepage": "https://github.com/andela-kochu/freelance",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "mongoose": "^4.0.2"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}
