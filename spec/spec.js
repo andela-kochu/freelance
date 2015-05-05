@@ -1,3 +1,7 @@
+'use strict';
 
 var mongoose = require('mongoose');
-var app =
+
+//var user = require('./models/user');
+
+
