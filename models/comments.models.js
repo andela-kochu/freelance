@@ -5,9 +5,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
-  name: {
+  title: {
     type: String,
     required: 'Name must be present'
+  },
+  content: {
+    type: String
   },
   url: {
     type: String
@@ -18,5 +21,5 @@ var commentSchema = new Schema({
   }
 });
 
-mongoose.model('comments, commentSchema');
+mongoose.model('comments', commentSchema);
 

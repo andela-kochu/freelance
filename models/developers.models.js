@@ -34,4 +34,4 @@ var developerSchema = new Schema({
   certifications: []
 });
 
-mongoose.model('developers, developerSchema');
+mongoose.model('developers', developerSchema);

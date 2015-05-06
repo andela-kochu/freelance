@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function(app){
   var  method = require('../controllers/jobs.controllers');
+module.exports = function(app){
 
   app.post('/create-job', method.createJob);
   app.get('/view-job', method.viewJobs);

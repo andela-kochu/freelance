@@ -33,7 +33,7 @@ exports.viewOneJob = function(req, res){
 exports.updateJob =function(req, res){
   Job.update({
     _id: req.params._id
-  }, function(err, job){
+  },  req.body, function(err, job){
     if(err){
       return res.json(err);
     }

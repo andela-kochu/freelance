@@ -33,7 +33,7 @@ exports.viewOneDeveloper = function(req, res){
 exports.updateDeveloper =function(req, res){
   Developer.update({
     _id: req.params._id
-  }, function(err, developer){
+  },  req.body, function(err, developer){
     if(err){
       return res.json(err);
     }

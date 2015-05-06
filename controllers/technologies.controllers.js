@@ -21,7 +21,16 @@ exports.viewTechnologies = function(req, res){
     res.json(technologies);
   });
 };
-
+exports.updateTechnologies =function(req, res){
+  Technology.update({
+    _id: req.params._id
+  }, req.body, function(err, tech){
+    if(err){
+      return res.json(err);
+    }
+    res.json(tech);
+  });
+};
 exports.deleteTechnologies = function(req, res){
   Technology.remove(function(err, technologies){
     if(err){
@@ -33,10 +42,10 @@ exports.deleteTechnologies = function(req, res){
 exports.deleteOneTechnology = function(req, res){
   Technology.remove({
     _id: req.params._id
-  }, function(err, technogy){
+  }, function(err, tech){
     if(err){
       return res.json(err);
     }
-    res.json(technology);
+    res.json(tech);
   });
 };

@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
 require('../models/users.models')
+var mongoose = require('mongoose');
 var User = mongoose.model('users');
 
 exports.createUser = function(req, res){
@@ -33,7 +33,7 @@ exports.viewOneUser = function(req, res){
 exports.updateUser =function(req, res){
   User.update({
     _id: req.params._id
-  }, function(err, user){
+  }, req.body, function(err, user){
     if(err){
       return res.json(err);
     }
@@ -55,6 +55,6 @@ exports.deleteOneUser = function(req, res){
     if(err){
       return res.json(err);
     }
-    res.json(users);
+    res.json(user);
   });
 };

@@ -11,19 +11,14 @@ var jobSchema = new Schema({
   },
   slug: {
     type: String,
-    required: 'Email address can not be empty'
+    required: 'Job slug can not be empty'
   },
-  phoneNumber: {
-    type: Number,
-    max: 15,
-    min: 11
+  description: {
+    type: String,
   },
-  imgUrl: {
-    type: String
-  },
-  interests: {
+  url: {
     type: String
   }
 });
 
-mongoose.model('jobs, jobSchema');
+mongoose.model('jobs', jobSchema);
