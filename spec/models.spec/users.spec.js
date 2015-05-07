@@ -30,45 +30,41 @@ describe('UserSchema', function() {
         expect(userSchemaObject['emailAddress'].options.required).toBe('Email address can not be empty');
     });
     it('should create a new user', function() {
-        User.create(newuser, function(err, info){
-            if(err){
-                expect(err).toBeDefined();
-            }
-        expect(info.name).toBe('Kingsley');
-        expect(info.emailAddress).toBe('chitech247@gmial.com');
+        User.create(newuser, function(err, user){
+        expect(err).not.toBeDefined();
+        expect(user.name).toBe('Kingsley');
+        expect(user.emailAddress).toBe('chitech247@gmial.com');
         });
     });
      it('should throw an error when data is not sufficient, name or emailAddress', function() {
-        User.create({name: 'Kingsley'}, function(err, info){
-        expect(err).toBeDefined();
+        User.create({name: 'Kingsley'}, function(err){
+        expect(err).toBeNull();
         });
     });
    it('should find users', function() {
-        User.find(function(err, info){
-            if(err){
-                expect(err).toBeDefined();
-            }
-        var type = typeof info;
+        User.find(function(err, user){
+        expect(err).not.toBeNull();
+        var type = typeof user;
         expect(type).toEqual('object');
-        expect(info.length).toBeGreaterThan(99);
+        expect(user.length).toBeGreaterThan(0);
         });
     });
     it('should update users', function() {
-        User.find(function(err, info){
-         var id = info[1]._id;
-            User.update({_id: id}, {name: "george"}, function(err, info2){
-                User.find({_id: id}, function(err, info3){
-                    expect(info3[0].name).toEqual('george');
+        User.find(function(err, user){
+         var id = user[1]._id;
+            User.update({_id: id}, {name: "george"}, function(){
+                User.find({_id: id}, function(err, updatedUser){
+                    expect(updatedUser[0].name).toEqual('george');
                 });
              });
         });
     });
     it('should delete the first user', function() {
-        User.find(function(err, info){
-         var id = info[1]._id;
-            User.remove({_id: id}, function(err, info2){
-                User.find(function(err, info3){
-                    info3.forEach(function(elem){
+        User.find(function(err, user){
+         var id = user[1]._id;
+            User.remove({_id: id}, function(){
+                User.find(function(err, usersFound){
+                    usersFound.forEach(function(elem){
                         expect(elem._id).not.toBe(id);
                     });
                 });

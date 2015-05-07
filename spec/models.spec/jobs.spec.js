@@ -26,8 +26,8 @@ describe('JobSchema', function() {
         expect(jobSchemaObject['name'].options.required).toBe('Name must be present');
     });
      it('should throw an error when data is not sufficient, name or slug', function() {
-        Job.create({name: 'New Job'}, function(err, info){
-        expect(err).toBeDefined();
+        Job.create({name: 'New Job'}, function(err){
+        expect(err).not.toBeNull();
         });
     });
 });
