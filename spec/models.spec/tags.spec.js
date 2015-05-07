@@ -25,8 +25,8 @@ describe('tagSchema', function() {
         expect(tagSchemaObject['name'].options.required).toBe('Name must be present');
     });
      it('should throw an error when data is not sufficient, name ', function() {
-        Tag.create({}, function(err, info){
-        expect(err).toBeDefined();
+        Tag.create({}, function(err){
+        expect(err).not.toBeNull();
         });
     });
 });

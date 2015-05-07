@@ -24,8 +24,8 @@ describe('commentSchema', function() {
         expect(commentSchemaObject['title'].options.required).toBe('Name must be present');
     });
      it('should throw an error when data is not sufficient, name ', function() {
-        Comment.create({}, function(err, info){
-        expect(err).toBeDefined();
+        Comment.create({}, function(err){
+        expect(err).not.toBeNull();
         });
     });
 });

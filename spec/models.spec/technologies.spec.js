@@ -25,8 +25,8 @@ describe('TechSchema', function() {
         expect(technologySchemaObject['name'].options.required).toBe('Name must be present');
     });
      it('should throw an error when data is not sufficient, name or emailAddress', function() {
-        Technology.create({name: 'Kingsley'}, function(err, info){
-        expect(err).toBeDefined();
+        Technology.create({name: 'Kingsley'}, function(err){
+        expect(err).not.toBeNull();
         });
     });
 });

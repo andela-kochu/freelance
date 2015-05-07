@@ -27,8 +27,8 @@ describe('DevSchema', function() {
         expect(developerSchemaObject['skills'].options.required).toBe("Developer must have skills");
     });
      it('should throw an error when data is not sufficient, name or emailAddress', function() {
-        Developer.create({name: 'Kingsley'}, function(err, info){
-        expect(err).toBeDefined();
+        Developer.create({name: 'Kingsley'}, function(err){
+        expect(err).not.toBeNull();
         });
     });
 });
