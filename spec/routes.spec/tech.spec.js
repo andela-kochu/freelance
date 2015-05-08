@@ -3,11 +3,11 @@
 var app = require('../../app');
 var request = require('supertest')(app);
 
-describe('Freelance App Routes', function(){
+describe('Freelance App Tech Routes', function(){
 
-  it('should Test GET method for /api/v1/users', function(done){
+  it('should Test GET method for /api/v1/technologies', function(done){
     request
-    .get('/api/v1/users')
+    .get('/api/v1/technologies')
     .expect(200)
     .expect('Content-Type', 'application/json; charset=utf-8')
     .end(function(err, res){
@@ -17,11 +17,11 @@ describe('Freelance App Routes', function(){
     });
   });
 
-  it('should Test POST method for /api/v1/users', function(done){
-  var newUser = {name: 'Chitech Ochu', emailAddress: 'kingsley@andela.co'};
+  it('should Test POST method for /api/v1/technologies', function(done){
+  var newTech = {name: 'javascript', url: 'kingsley@andela.co'};
     request
-      .post('/api/v1/users')
-      .send(newUser)
+      .post('/api/v1/technologies')
+      .send(newTech)
       .expect(200)
       .end(function(err, res){
         expect(err).toBeNull();
@@ -30,18 +30,18 @@ describe('Freelance App Routes', function(){
     });
   });
 
-  it('should Test PUT method for /api/v1/users/:id', function(done){
-    var editedUser = {name: 'Edited Chitech', emailAddress: 'email@andela.co'};
+  it('should Test PUT method for /api/v1/technologies/:id', function(done){
+    var editTech = {name: 'PHP', url: 'email@andela.co'};
     request
-      .get('/api/v1/users')
+      .get('/api/v1/technologies')
       .expect(200)
       .end(function(err, res){
         if(err){
           return done(err);
         }
         request
-          .put('/api/v1/users/' + res.body[0]._id)
-          .send(editedUser)
+          .put('/api/v1/technologies/' + res.body[0]._id)
+          .send(editTech)
           .expect(200)
           .end(function(err, res){
             expect(err).toBeNull();
@@ -50,16 +50,16 @@ describe('Freelance App Routes', function(){
         });
     });
   });
-  it('should Test DELETE method for /api/v1/users/:id', function(done){
+  it('should Test DELETE method for /api/v1/technologies/:id', function(done){
     request
-      .get('/api/v1/users')
+      .get('/api/v1/technologies')
       .expect(200)
       .end(function(err, res){
         if(err){
           return done(err);
         }
         request
-          .delete('/api/v1/users/' + res.body[0]._id)
+          .delete('/api/v1/technologies/' + res.body[0]._id)
           .expect(200)
           .end(function(err, res){
             expect(err).toBeNull();
@@ -68,11 +68,11 @@ describe('Freelance App Routes', function(){
         });
     });
   });
-    it('should not be able to create a user if the data is not sufficient', function(done) {
-    var newUser = {name: 'Chitech Ochu'};
+    it('should not be able to create a tech if the data is not sufficient', function(done) {
+    var newTech = {url: 'htttp://#'};
     request
-      .post('/api/v1/users')
-      .send(newUser)
+      .post('/api/v1/technologies')
+      .send(newTech)
       .expect(401)
       .end(function(err, res) {
         expect(err).not.toBeNull();
