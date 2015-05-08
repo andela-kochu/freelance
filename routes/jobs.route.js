@@ -1,5 +1,6 @@
 'use strict';
-
+var express = require('express');
+var router = express.Router();
 var  ctrl = require('../controllers/jobs.controllers');
 
 module.exports = function(app){
