@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 require('../models/comments.models')
-var Comment = mongoose.model('comments');
+var Comment = mongoose.model('Comments');
 
 exports.createComment = function(req, res){
   Comment.create(req.body, function(err, comment){
@@ -32,7 +32,7 @@ exports.deleteComments = function(req, res){
 };
 exports.deleteOneComment = function(req, res){
   Comment.remove({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, comment){
     if(err){
       return res.json(err);

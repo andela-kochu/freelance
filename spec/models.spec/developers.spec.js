@@ -8,7 +8,7 @@ describe('DevSchema', function() {
 
     it('should have the Userschema to be defined', function() {
        expect(Developer).toBeDefined();
-       expect(Developer.modelName).toBe('developers');
+       expect(Developer.modelName).toBe('Developers');
     });
     it('should have the 6 schemas + _id + _v', function() {
         var developerSchemaObject = Developer.schema.paths;

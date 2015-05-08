@@ -4,7 +4,7 @@ describe('commentSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Comment = mongoose.model('comments');
+    var Comment = mongoose.model('Comments');
     var commentSchemaObject = Comment.schema.paths;
     it('should have the commentschema to be defined', function() {
        expect(Comment).toBeDefined();

@@ -4,7 +4,7 @@ describe('JobSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Job = mongoose.model('jobs');
+    var Job = mongoose.model('Jobs');
 
     it('should have the Jobschema to be defined', function() {
        expect(Job).toBeDefined();

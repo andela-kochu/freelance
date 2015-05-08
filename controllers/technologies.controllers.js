@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 require('../models/technologies.models')
-var Technology = mongoose.model('technologies');
+var Technology = mongoose.model('Technologies');
 
 exports.createTechnology = function(req, res){
   Technology.create(req.body, function(err, technology){
@@ -23,7 +23,7 @@ exports.viewTechnologies = function(req, res){
 };
 exports.updateTechnologies =function(req, res){
   Technology.update({
-    _id: req.params._id
+    _id: req.params.id
   }, req.body, function(err, tech){
     if(err){
       return res.json(err);
@@ -41,7 +41,7 @@ exports.deleteTechnologies = function(req, res){
 };
 exports.deleteOneTechnology = function(req, res){
   Technology.remove({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, tech){
     if(err){
       return res.json(err);

@@ -4,7 +4,7 @@ describe('UserSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var User = mongoose.model('users');
+    var User = mongoose.model('Users');
     var newuser = {
         name: "Kingsley",
         emailAddress: 'chitech247@gmial.com'

@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 require('../models/jobs.models')
-var Job = mongoose.model('jobs');
+var Job = mongoose.model('Jobs');
 
 exports.createJob = function(req, res){
   Job.create(req.body, function(err, job){
@@ -22,7 +22,7 @@ exports.viewJobs = function(req, res){
 };
 exports.viewOneJob = function(req, res){
   Job.find({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, jobs){
     if(err){
       return res.json(err);
@@ -32,7 +32,7 @@ exports.viewOneJob = function(req, res){
 };
 exports.updateJob =function(req, res){
   Job.update({
-    _id: req.params._id
+    _id: req.params.id
   },  req.body, function(err, job){
     if(err){
       return res.json(err);
@@ -50,7 +50,7 @@ exports.deleteJobs = function(req, res){
 };
 exports.deleteOneJob = function(req, res){
   Job.remove({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, job){
     if(err){
       return res.json(err);

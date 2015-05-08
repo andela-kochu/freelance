@@ -13,6 +13,9 @@ var userSchema = new Schema({
     type: String,
     required: 'Email address can not be empty'
   },
+  linkedId: {
+    type: String
+  },
   phoneNumber: {
     type: Number,
     max: 15,
@@ -30,4 +33,4 @@ var userSchema = new Schema({
   }]
 });
 
-mongoose.model('users', userSchema);
+mongoose.model('Users', userSchema);

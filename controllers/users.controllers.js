@@ -2,7 +2,7 @@
 
 require('../models/users.models');
 var mongoose = require('mongoose');
-var User = mongoose.model('users');
+var User = mongoose.model('Users');
 
 exports.createUser = function(req, res){
   User.create(req.body, function(err, user){
@@ -22,7 +22,7 @@ exports.viewUsers = function(req, res){
 };
 exports.viewOneUser = function(req, res){
   User.find({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, users){
     if(err){
       return res.json(err);
@@ -32,7 +32,7 @@ exports.viewOneUser = function(req, res){
 };
 exports.updateUser =function(req, res){
   User.update({
-    _id: req.params._id
+    _id: req.params.id
   }, req.body, function(err, user){
     if(err){
       return res.json(err);
@@ -50,7 +50,7 @@ exports.deleteUsers = function(req, res){
 };
 exports.deleteOneUser = function(req, res){
   User.remove({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, user){
     if(err){
       return res.json(err);

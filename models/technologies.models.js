@@ -15,5 +15,5 @@ var techSchema = new Schema({
   jobs:[{}]
 });
 
-mongoose.model('technologies', techSchema);
+mongoose.model('Technologies', techSchema);
 

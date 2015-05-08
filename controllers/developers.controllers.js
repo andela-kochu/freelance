@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 require('../models/developers.models')
-var Developer = mongoose.model('developers');
+var Developer = mongoose.model('Developers');
 
 exports.createDeveloper = function(req, res){
   Developer.create(req.body, function(err, developer){
@@ -22,7 +22,7 @@ exports.viewDevelopers = function(req, res){
 };
 exports.viewOneDeveloper = function(req, res){
   Developer.find({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, developers){
     if(err){
       return res.json(err);
@@ -32,7 +32,7 @@ exports.viewOneDeveloper = function(req, res){
 };
 exports.updateDeveloper =function(req, res){
   Developer.update({
-    _id: req.params._id
+    _id: req.params.id
   },  req.body, function(err, developer){
     if(err){
       return res.json(err);
@@ -50,7 +50,7 @@ exports.deleteDevelopers = function(req, res){
 };
 exports.deleteOneDeveloper = function(req, res){
   Developer.remove({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, developer){
     if(err){
       return res.json(err);

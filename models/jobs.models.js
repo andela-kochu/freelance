@@ -21,4 +21,4 @@ var jobSchema = new Schema({
   }
 });
 
-mongoose.model('jobs', jobSchema);
+mongoose.model('Jobs', jobSchema);

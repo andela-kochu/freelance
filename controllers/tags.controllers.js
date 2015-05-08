@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 require('../models/tags.models')
-var Tag = mongoose.model('tags');
+var Tag = mongoose.model('Tags');
 
 exports.createTag = function(req, res){
   Tag.create(req.body, function(err, tag){
@@ -32,7 +32,7 @@ exports.deleteTags = function(req, res){
 };
 exports.deleteOneTag = function(req, res){
   Tag.remove({
-    _id: req.params._id
+    _id: req.params.id
   }, function(err, tag){
     if(err){
       return res.json(err);

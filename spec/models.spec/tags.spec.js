@@ -4,7 +4,7 @@ describe('tagSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Tag = mongoose.model('tags');
+    var Tag = mongoose.model('Tags');
     var tagSchemaObject = Tag.schema.paths;
 
     it('should have the commentschema to be defined', function() {

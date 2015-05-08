@@ -5,8 +5,8 @@ module.exports = function(app){
 
   app.post('/create-developer', method.createDeveloper);
   app.get('/view-developer', method.viewDevelopers);
-  app.get('/view-developer/:_id', method.viewOneDeveloper);
-  app.put('/update-developer/:_id', method.updateDeveloper);
+  app.get('/view-developer/:id', method.viewOneDeveloper);
+  app.put('/update-developer/:id', method.updateDeveloper);
   app.delete('/delete-developer', method.deleteDevelopers);
-  app.delete('/delete-developer/:_id', method.deleteOneDeveloper);
+  app.delete('/delete-developer/:id', method.deleteOneDeveloper);
 };

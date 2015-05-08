@@ -9,7 +9,7 @@ module.exports = function(app){
     .post(method.createUser)
     .delete(method.deleteUsers);
 
-  router.route('/users/:_id')
+  router.route('/users/:id')
     .get(method.viewOneUser)
     .put(method.updateUser)
     .delete(method.deleteOneUser);
