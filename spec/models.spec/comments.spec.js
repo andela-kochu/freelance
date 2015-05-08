@@ -8,7 +8,7 @@ describe('commentSchema', function() {
     var commentSchemaObject = Comment.schema.paths;
     it('should have the commentschema to be defined', function() {
        expect(Comment).toBeDefined();
-       expect(Comment.modelName).toBe('comments');
+       expect(Comment.modelName).toBe('Comments');
     });
     it('should have the 4 schemas + _id + _v', function() {
             var count = 0;

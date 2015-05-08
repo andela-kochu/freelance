@@ -4,7 +4,7 @@ describe('DevSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Developer = mongoose.model('developers');
+    var Developer = mongoose.model('Developers');
 
     it('should have the Userschema to be defined', function() {
        expect(Developer).toBeDefined();

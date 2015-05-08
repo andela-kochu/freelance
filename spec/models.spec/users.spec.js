@@ -12,7 +12,7 @@ describe('UserSchema', function() {
 
     it('should have the Userschema to be defined', function() {
        expect(User).toBeDefined();
-       expect(User.modelName).toBe('users');
+       expect(User.modelName).toBe('Users');
     });
     it('should have the 6 schemas + _id + _v', function() {
         var userSchemaObject = User.schema.paths;
@@ -22,7 +22,7 @@ describe('UserSchema', function() {
                     count++;
                 }
             };
-        expect(count).toEqual(8);
+        expect(count).toEqual(9);
     });
     it('should have the validations', function() {
         var userSchemaObject = User.schema.paths;

@@ -4,7 +4,8 @@
   "description": "An application for developers to view and post jobs",
   "main": "server.js",
   "scripts": {
-    "test": "jasmine-node --autotest spec/",
+    "test2": "jasmine-node --autotest spec/routes.spec/",
+    "test": "jasmine-node --autotest spec/models.spec/",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -31,6 +32,7 @@
     "passport-oauth": "^1.0.0"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5"
+    "jasmine-node": "^1.14.5",
+    "supertest": "^0.15.0"
   }
 }
