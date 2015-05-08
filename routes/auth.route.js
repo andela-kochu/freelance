@@ -18,14 +18,15 @@ module.exports = function(app, passport){
       if(!user) {
         return res.redirect('http://localhost:8000');
       }
-     /* console.log(user)
+        return res.redirect('http://localhost:800f0');
+   /*   console.log(user)
       User.findOne({'linkedId': user.id},function(err,usr) {
-       console.log(usr)*/
-        res.writeHead(302, {
+       console.log(usr)
+       return res.writeHead(302, {
           'Location': 'http://localhost:8000/#/index?token=' + token + '&user=' + user.emailAddress
         });
-   /*     res.end();
-      });*/
+       res.end();
+     })*/
     })(req,res,next);
   };
   router.route('/auth/linkedin/callback')

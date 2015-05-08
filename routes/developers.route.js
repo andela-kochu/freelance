@@ -1,12 +1,17 @@
 'use strict';
 
-module.exports = function(app){
-  var  method = require('../controllers/developers.controllers');
+var  ctrl = require('../controllers/developers.controllers');
 
-  app.post('/create-developer', method.createDeveloper);
-  app.get('/view-developer', method.viewDevelopers);
-  app.get('/view-developer/:id', method.viewOneDeveloper);
-  app.put('/update-developer/:id', method.updateDeveloper);
-  app.delete('/delete-developer', method.deleteDevelopers);
-  app.delete('/delete-developer/:id', method.deleteOneDeveloper);
+module.exports = function(app){
+  router.route('/developers')
+    .get(ctrl.viewDevelopers)
+    .post(ctrl.createDeveloper)
+    .delete(ctrl.deleteDevelopers);
+
+  router.route('/developers/:id')
+    .get(ctrl.viewOneDeveloper)
+    .put(ctrl.updateDeveloper)
+    .delete(ctrl.deleteOneDeveloper);
+  app.use('/api/v1', router);
 };
+

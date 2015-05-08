@@ -1,10 +1,15 @@
 'use strict';
 
-module.exports = function(app){
-  var  method = require('../controllers/tags.controllers');
+var  ctrl = require('../controllers/tags.controllers');
 
-  app.post('/create-tag', method.createTag);
-  app.get('/view-tag', method.viewTags);
-  app.delete('/delete-tag', method.deleteTags);
-  app.delete('/delete-tag/:id', method.deleteOneTag);
+module.exports = function(app){
+  router.route('/tags')
+    .get(ctrl.viewTags)
+    .post(ctrl.createTag)
+    .delete(ctrl.deleteTags);
+
+  router.route('/tags/:id')
+    .delete(ctrl.deleteOneTag);
+  app.use('/api/v1', router);
 };
+
