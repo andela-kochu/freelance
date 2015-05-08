@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 //app.use(express.json());
-app.use(session({ secret: 'keyboard cat' }));
+app.use(session({ secret: 'keyboard cat'}));
 app.use(passport.session());
 
 
@@ -95,4 +95,4 @@ app.listen((process.env.PORT || 3000), function(){
   console.log('Server started successfully at port:', '3000');
 });
 
-module.exports = app;
+exports = module.exports = app;
