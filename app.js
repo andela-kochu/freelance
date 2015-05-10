@@ -1,5 +1,7 @@
 'use strict';
 
+//Still to be structured
+
 var express = require('express');
 var session = require('express-session');
 var passport = require('passport')
@@ -16,14 +18,13 @@ app.use(passport.initialize());
 app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.session());
 
-
+require('./routes/auth.route')(app, passport);
 require('./routes/comments.route')(app);
 require('./routes/developers.route')(app);
 require('./routes/jobs.route')(app);
 require('./routes/tags.route')(app);
 require('./routes/technologies.route')(app);
 require('./routes/users.route')(app);
-
 
 /*passport.serializeUser(function(profile, done) {
   done(null, profile.id);
@@ -39,8 +40,6 @@ passport.deserializeUser(function(id, done) {
 
 require('./models/users.models');
 var User = mongoose.model('Users');
-
-
 
 var authConfig = new LinkedInStrategy({
     clientID: '77x4iyq8ntpmlf',
@@ -86,11 +85,7 @@ var authConfig = new LinkedInStrategy({
     });
   });
 
-
-
 passport.use(authConfig);
-
-require('./routes/auth.route')(app, passport);
 
 
 module.exports = app;
