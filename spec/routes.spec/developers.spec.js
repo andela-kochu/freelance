@@ -1,6 +1,6 @@
 'use strict';
 
-var app = require('../../app');
+var app = require('../../server');
 var request = require('supertest')(app);
 
 describe('Freelance App Developer Routes', function(){

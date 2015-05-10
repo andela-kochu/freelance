@@ -13,6 +13,9 @@ module.exports = function(app) {
     .get(ctrl.viewOneUser)
     .put(ctrl.updateUser)
     .delete(ctrl.deleteOneUser);
+
+  router.router('/users/register')
+    .post(ctrl.registerUser);
+
   app.use('/api/v1', router);
 };
-

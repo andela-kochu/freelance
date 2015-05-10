@@ -18,7 +18,23 @@ var jobSchema = new Schema({
   },
   url: {
     type: String
-  }
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: 'Users'
+  },
+  comments: [{
+    type:Schema.ObjectId,
+    ref: 'Comments'
+  }],
+  tags: [{
+    type:Schema.ObjectId,
+    ref: 'Tags'
+  }],
+  technologies: [{
+    type:Schema.ObjectId,
+    ref: 'Technologies'
+  }]
 });
 
 mongoose.model('Jobs', jobSchema);
