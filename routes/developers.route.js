@@ -1,9 +1,9 @@
 'use strict';
 var express = require('express');
+var ctrl = require('../controllers/developers.controllers');
 var router = express.Router();
-var  ctrl = require('../controllers/developers.controllers');
 
-module.exports = function(app){
+module.exports = function(app) {
   router.route('/developers')
     .get(ctrl.viewDevelopers)
     .post(ctrl.createDeveloper)

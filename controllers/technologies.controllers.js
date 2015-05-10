@@ -1,11 +1,11 @@
 'use strict';
 
-var mongoose = require('mongoose');
 require('../models/technologies.models')
+var mongoose = require('mongoose');
 var Technology = mongoose.model('Technologies');
 
-exports.createTechnology = function(req, res){
-  Technology.create(req.body, function(err, technology){
+exports.createTechnology = function(req, res) {
+  Technology.create(req.body, function(err, technology) {
     if(err){
       return res.json(err);
     }
@@ -13,36 +13,36 @@ exports.createTechnology = function(req, res){
   });
 };
 
-exports.viewTechnologies = function(req, res){
-  Technology.find(function(err, technologies){
+exports.viewTechnologies = function(req, res) {
+  Technology.find(function(err, technologies) {
     if(err){
       return res.json(err);
     }
     res.json(technologies);
   });
 };
-exports.updateTechnologies =function(req, res){
+exports.updateTechnologies = function(req, res) {
   Technology.update({
     _id: req.params.id
-  }, req.body, function(err, tech){
+  }, req.body, function(err, tech) {
     if(err){
       return res.json(err);
     }
     res.json(tech);
   });
 };
-exports.deleteTechnologies = function(req, res){
-  Technology.remove(function(err, technologies){
+exports.deleteTechnologies = function(req, res) {
+  Technology.remove(function(err, technologies) {
     if(err){
       return res.json(err);
     }
     res.json(technologies);
   });
 };
-exports.deleteOneTechnology = function(req, res){
+exports.deleteOneTechnology = function(req, res) {
   Technology.remove({
     _id: req.params.id
-  }, function(err, tech){
+  }, function(err, tech) {
     if(err){
       return res.json(err);
     }

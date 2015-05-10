@@ -1,9 +1,10 @@
 'use strict';
-var express = require('express');
-var router = express.Router();
-var  ctrl = require('../controllers/comments.controllers');
 
-module.exports = function(app){
+var express = require('express');
+var ctrl = require('../controllers/comments.controllers');
+var router = express.Router();
+
+module.exports = function(app) {
   router.route('/comments')
     .get(ctrl.viewComments)
     .post(ctrl.createComment)

@@ -1,9 +1,9 @@
 'use strict';
 var express = require('express');
+var ctrl = require('../controllers/users.controllers');
 var router = express.Router();
-var  ctrl = require('../controllers/users.controllers');
 
-module.exports = function(app){
+module.exports = function(app) {
   router.route('/users')
     .get(ctrl.viewUsers)
     .post(ctrl.createUser)

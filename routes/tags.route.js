@@ -1,9 +1,9 @@
 'use strict';
 var express = require('express');
+var ctrl = require('../controllers/tags.controllers');
 var router = express.Router();
-var  ctrl = require('../controllers/tags.controllers');
 
-module.exports = function(app){
+module.exports = function(app) {
   router.route('/tags')
     .get(ctrl.viewTags)
     .post(ctrl.createTag)

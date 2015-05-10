@@ -13,11 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 //app.use(express.json());
-app.use(session({
-    secret: 'keyboard cat',
-    resave: true,
-    saveUninitialized: true
-  }));
+app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.session());
 
 
@@ -44,6 +40,8 @@ passport.deserializeUser(function(id, done) {
 require('./models/users.models');
 var User = mongoose.model('Users');
 
+
+
 var authConfig = new LinkedInStrategy({
     clientID: '77x4iyq8ntpmlf',
     clientSecret: 'ZJGdyoWS0E7jjat5',
@@ -56,6 +54,11 @@ var authConfig = new LinkedInStrategy({
     // asynchronous verification, for effect...
     profile.accessToken = accessToken;
     process.nextTick(function () {
+      // To keep the example simple, the user's Linkedin profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Linkedin accoun t with a userrecord in your database,
+      //console.log(accessToken, profile.id)
+      // and return that user instead.
         console.log(profile.id)
         User.findOne({'linkedId': profile.id}, function(err, user){
           if (err){
@@ -64,7 +67,7 @@ var authConfig = new LinkedInStrategy({
           }
             // if the user is found, then log them in
             if (user) {
-                return done(null, user, accessToken); // user found, return that user
+                return done(null, profile); // user found, return that user
             }
             else {
                 // if there is no user found with that facebook id, create them
@@ -72,19 +75,22 @@ var authConfig = new LinkedInStrategy({
                   name: profile.displayName,
                   emailAddress: profile.emails[0].value,
                   linkedId: profile.id
-                }, function(err, usr){
+                }, function(err, success){
                   if(err){
                     console.log('Could not create user');
                   }
-                    return done(null, usr, accessToken);
+                    return done(null, profile);
                });
             };
           });
     });
   });
 
+
+
 passport.use(authConfig);
 
 require('./routes/auth.route')(app, passport);
+
 
 module.exports = app;

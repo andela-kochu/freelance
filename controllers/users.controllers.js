@@ -4,54 +4,54 @@ require('../models/users.models');
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
 
-exports.createUser = function(req, res){
-  User.create(req.body, function(err, user){
+exports.createUser = function(req, res) {
+  User.create(req.body, function(err, user) {
     if(err){
       return res.json(err);
     }
     res.json(user);
   });
 };
-exports.viewUsers = function(req, res){
-  User.find(function(err, users){
+exports.viewUsers = function(req, res) {
+  User.find(function(err, users) {
     if(err){
       return res.json(err);
     }
     res.json(users);
   });
 };
-exports.viewOneUser = function(req, res){
+exports.viewOneUser = function(req, res) {
   User.find({
     _id: req.params.id
-  }, function(err, users){
+  }, function(err, users) {
     if(err){
       return res.json(err);
     }
     res.json(users);
   });
 };
-exports.updateUser =function(req, res){
+exports.updateUser = function(req, res) {
   User.update({
     _id: req.params.id
-  }, req.body, function(err, user){
+  }, req.body, function(err, user) {
     if(err){
       return res.json(err);
     }
     res.json(user);
   });
 };
-exports.deleteUsers = function(req, res){
-  User.remove(function(err, users){
+exports.deleteUsers = function(req, res) {
+  User.remove(function(err, users) {
     if(err){
       return res.json(err);
     }
     res.json(users);
   });
 };
-exports.deleteOneUser = function(req, res){
+exports.deleteOneUser = function(req, res) {
   User.remove({
     _id: req.params.id
-  }, function(err, user){
+  }, function(err, user) {
     if(err){
       return res.json(err);
     }
