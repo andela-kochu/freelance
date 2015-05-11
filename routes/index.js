@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports =function(app, passport) {
+module.exports = function(app, passport) {
   require('./auth.route')(app, passport);
   require('./comments.route')(app);
   require('./developers.route')(app);
