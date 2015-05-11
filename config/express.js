@@ -26,7 +26,7 @@ module.exports = function() {
   require('./passport')();
 
   app.get('/', function(request, response) {
-    response.send("fdhjdfjkdfjkdfjk");
+    response.send("App successfully deployed by CHITECH");
   });
 
   require('../routes/index')(app, passport);
