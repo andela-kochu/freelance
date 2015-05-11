@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/production'
+  db: 'ds037407.mongolab.com:37407/heroku_app36743774'
 };
