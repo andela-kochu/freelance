@@ -4,11 +4,11 @@ describe('TechSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Technology = mongoose.model('technologies');
+    var Technology = mongoose.model('Technologies');
 
     it('should have the Technology to be defined', function() {
        expect(Technology).toBeDefined();
-       expect(Technology.modelName).toBe('technologies');
+       expect(Technology.modelName).toBe('Technologies');
     });
     it('should have the 6 schemas + _id + _v', function() {
         var technologySchemaObject = Technology.schema.paths;

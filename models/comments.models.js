@@ -21,5 +21,5 @@ var commentSchema = new Schema({
   }
 });
 
-mongoose.model('comments', commentSchema);
+mongoose.model('Comments', commentSchema);
 

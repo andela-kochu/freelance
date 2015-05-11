@@ -4,11 +4,11 @@ describe('JobSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Job = mongoose.model('jobs');
+    var Job = mongoose.model('Jobs');
 
     it('should have the Jobschema to be defined', function() {
        expect(Job).toBeDefined();
-       expect(Job.modelName).toBe('jobs');
+       expect(Job.modelName).toBe('Jobs');
     });
     it('should have the 4 schemas + _id + _v', function() {
         var jobSchemaObject = Job.schema.paths;

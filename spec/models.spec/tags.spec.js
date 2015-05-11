@@ -4,12 +4,12 @@ describe('tagSchema', function() {
     require('../test.config');
 
     var mongoose = require('mongoose');
-    var Tag = mongoose.model('tags');
+    var Tag = mongoose.model('Tags');
     var tagSchemaObject = Tag.schema.paths;
 
     it('should have the commentschema to be defined', function() {
        expect(Tag).toBeDefined();
-       expect(Tag.modelName).toBe('tags');
+       expect(Tag.modelName).toBe('Tags');
     });
     it('should have the 4 schemas + _id + _v', function() {
             var count = 0;

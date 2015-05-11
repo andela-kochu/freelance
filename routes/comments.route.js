@@ -1,10 +1,17 @@
 'use strict';
 
-module.exports = function(app){
-  var  method = require('../controllers/comments.controllers');
+var express = require('express');
+var ctrl = require('../controllers/comments.controllers');
+var router = express.Router();
 
-  app.post('/create-comment', method.createComment);
-  app.get('/view-comment', method.viewComments);
-  app.delete('/delete-comment', method.deleteComments);
-  app.delete('/delete-comment/:_id', method.deleteOneComment);
+module.exports = function(app) {
+  router.route('/comments')
+    .get(ctrl.viewComments)
+    .post(ctrl.createComment)
+    .delete(ctrl.deleteComments);
+
+  router.route('/comments/:id')
+    .delete(ctrl.deleteOneComment);
+  app.use('/api/v1', router);
 };
+

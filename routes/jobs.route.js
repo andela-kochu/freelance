@@ -1,12 +1,18 @@
 'use strict';
+var express = require('express');
+var ctrl = require('../controllers/jobs.controllers');
+var router = express.Router();
 
-  var  method = require('../controllers/jobs.controllers');
-module.exports = function(app){
+module.exports = function(app) {
+  router.route('/jobs')
+    .get(ctrl.viewJobs)
+    .post(ctrl.createJob)
+    .delete(ctrl.deleteJobs);
 
-  app.post('/create-job', method.createJob);
-  app.get('/view-job', method.viewJobs);
-  app.get('/view-job/:_id', method.viewOneJob);
-  app.put('/update-job/:_id', method.updateJob);
-  app.delete('/delete-job', method.deleteJobs);
-  app.delete('/delete-job/:_id', method.deleteOneJob);
+  router.route('/jobs/:id')
+    .get(ctrl.viewOneJob)
+    .put(ctrl.updateJob)
+    .delete(ctrl.deleteOneJob);
+  app.use('/api/v1', router);
 };
+

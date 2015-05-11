@@ -12,8 +12,11 @@ var techSchema = new Schema({
   url: {
     type: String
   },
-  jobs:[{}]
+  job: {
+    type: Schema.Types.ObjectId,
+    ref: 'jobs'
+  }
 });
 
-mongoose.model('technologies', techSchema);
+mongoose.model('Technologies', techSchema);
 

@@ -1,11 +1,17 @@
 'use strict';
+var express = require('express');
+var ctrl = require('../controllers/technologies.controllers');
+var router = express.Router();
 
-module.exports = function(app){
-  var  method = require('../controllers/technologies.controllers');
+module.exports = function(app) {
+  router.route('/technologies')
+    .get(ctrl.viewTechnologies)
+    .post(ctrl.createTechnology)
+    .delete(ctrl.deleteTechnologies);
 
-  app.post('/create-tech', method.createTechnology);
-  app.get('/view-tech', method.viewTechnologies);
-  app.put('/update-tech/:_id', method.updateTechnologies);
-  app.delete('/delete-tech/:_id', method.deleteOneTechnology);
-  app.delete('/delete-tech', method.deleteTechnologies);
+  router.route('/technologies/:id')
+    .put(ctrl.updateTechnologies)
+    .delete(ctrl.deleteOneTechnology);
+  app.use('/api/v1', router);
 };
+

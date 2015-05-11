@@ -12,11 +12,11 @@ var tagSchema = new Schema({
   url: {
     type: String
   },
-  job: [{
+  job: {
     type: Schema.Types.ObjectId,
     ref: 'jobs'
-  }]
+  }
 });
 
-mongoose.model('tags', tagSchema);
+mongoose.model('Tags', tagSchema);
 

@@ -1,12 +1,24 @@
 'use strict';
+var express = require('express');
+var ctrl = require('../controllers/users.controllers');
+var router = express.Router();
 
-module.exports = function(app){
-  var  method = require('../controllers/users.controllers');
+module.exports = function(app) {
+  router.route('/users')
+    .get(ctrl.viewUsers)
+    .post(ctrl.createUser)
+    .delete(ctrl.deleteUsers);
 
-  app.post('/create-user', method.createUser);
-  app.get('/view-user', method.viewUsers);
-  app.get('/view-user/:_id', method.viewOneUser);
-  app.put('/update-user/:_id', method.updateUser);
-  app.delete('/delete-user', method.deleteUsers);
-  app.delete('/delete-user/:_id', method.deleteOneUser);
+  router.route('/users/:id')
+    .get(ctrl.viewOneUser)
+    .put(ctrl.updateUser)
+    .delete(ctrl.deleteOneUser);
+
+  router.route('/users/register')
+    .post(ctrl.registerUser);
+
+  router.route('/users/login')
+    .post(ctrl.loginUser);
+
+  app.use('/api/v1', router);
 };
