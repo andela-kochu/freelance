@@ -14,8 +14,11 @@ module.exports = function(app) {
     .put(ctrl.updateUser)
     .delete(ctrl.deleteOneUser);
 
-  router.router('/users/register')
+  router.route('/users/register')
     .post(ctrl.registerUser);
+
+  router.route('/users/login')
+    .post(ctrl.loginUser);
 
   app.use('/api/v1', router);
 };

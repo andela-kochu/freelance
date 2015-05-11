@@ -62,7 +62,7 @@ userSchema.methods.generateJWT = function() {
     _id: this._id,
     name: this.name,
     exp: parseInt(exp.getTime() / 1000),
-  }, 'SECRET');
+  }, 'CHITECH');
 };
 
 mongoose.model('Users', userSchema);
