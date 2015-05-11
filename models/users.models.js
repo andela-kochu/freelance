@@ -28,12 +28,10 @@ var userSchema = new Schema({
   interests: {
     type: String
   },
-  password: {
-    type: String
-    // default: '',
-    // validate: [validateLocalStrategyPassword, 'Password should be longer']
-  },
   salt: {
+    type: String
+  },
+  hash: {
     type: String
   }
 });

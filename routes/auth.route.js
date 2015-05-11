@@ -13,12 +13,11 @@ module.exports = function(app, passport){
           if (err || !user) {
             return res.redirect('/#!/signin');
           }
-            return res.redirect(redirectURL || '/');
+           return res.json({token: user.generateJWT()});
+            //return res.redirect(redirectURL || '/');
         })(req, res, next);
       };
     };
-
-
   router.route('/auth/linkedin/callback')
     .get(AuthCallback('linkedin'));
 

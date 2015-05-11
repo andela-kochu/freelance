@@ -1,15 +1,18 @@
 'use strict';
 
 require('../models/users.models');
-var mongoose = require('mongoose');
-var User = mongoose.model('Users');
+var mongoose = require('mongoose'),
+    User = mongoose.model('Users'),
+    jwt = require('jsonwebtoken');
 
-exports.createUser = function(req, res) {
-  User.create(req.body, function(err, user) {
-    if(err){
-      return res.json(err);
-    }
-    res.json(user);
+exports.createUser = function(req, res, next) {
+  var user = new User();
+  user.name = req.body.name;
+  user.emailAddress = req.body.emailAddress;
+  user.setPassword(req.body.password)
+  user.save(function (err){
+    if(err){ return next(err); }
+    return res.json({token: user.generateJWT()})
   });
 };
 exports.viewUsers = function(req, res) {
@@ -58,32 +61,48 @@ exports.deleteOneUser = function(req, res) {
     res.json(user);
   });
 };
-exports.registerUser = function(req, res, next) {
-  if(!req.body.name || !req.body.password){
-    return res.status(400).json({message: 'Please fill out all fields'});
-  }
-  var user = new User();
-  user.name = req.body.name;
-  user.emailAddress = req.body.emailAddress;
-  user.setPassword(req.body.password)
-  user.save(function (err){
-    if(err){ return next(err); }
-    return res.json({token: user.generateJWT()})
-  });
-};
 
 exports.loginUser = function(req, res, next) {
   if(!req.body.name || !req.body.password) {
     return res.status(400).json({message: 'Please fill out all fields'});
   }
-  passport.authenticate('local', function(err, user, info){
-    if(err){ return next(err); }
-
+  User.findOne({
+    name: req.body.name
+  }, function(err, user){
+    if(err){
+      return next(err);
+    }
     if(user){
-      return res.json({token: user.generateJWT()});
+      console.log(user)
+        if(user.validPassword(req.body.password)){
+          return res.json({token: user.generateJWT()});
+        }
+        else {
+           return res.status(401).json({message: 'Enter a valid password'});
+        }
     } else {
       return res.status(401).json(info);
     }
   })
 };
 
+exports.verifyToken = function(req, res, next) {
+    var token = req.headers['x-access-token'];
+    if(token){
+      jwt.verify(token, 'CHITECH', function(err, decoded){
+        if(err){
+          res.json({
+            message: 'Enter a valid token'
+          });
+        }
+        else{
+          req.decoded = decoded;
+          next();
+        }
+      });
+    }else{
+      return res.status(403).json({
+        message: 'Enter a token'
+      });
+    }
+  };
