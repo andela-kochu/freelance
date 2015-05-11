@@ -8,14 +8,13 @@ var mongoose = require('mongoose'),
 var userSchema = new Schema({
   name: {
     type: String,
-    required: 'Name must be present'
+    required: 'Name must be present',
+    unique: "Name already exist, select a new one"
   },
   emailAddress: {
     type: String,
-    required: 'Email address can not be empty'
-  },
-  linkedId: {
-    type: String
+    required: 'Email address can not be empty',
+    unique: "Name already exist, select a new one"
   },
   phoneNumber: {
     type: Number,
@@ -28,6 +27,12 @@ var userSchema = new Schema({
   interests: {
     type: String
   },
+  picture: {
+    type: String
+  },
+  gender: {
+    type: String
+  },
   salt: {
     type: String
   },
@@ -35,7 +40,7 @@ var userSchema = new Schema({
     type: String
   }
 });
-/**
+/*
  * Create instance method for hashing a password
  */
 userSchema.methods.setPassword = function(password){
@@ -43,7 +48,7 @@ userSchema.methods.setPassword = function(password){
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
 
-/**
+/*
  * Create instance method for validating password
  */
 userSchema.methods.validPassword = function(password){
@@ -60,7 +65,7 @@ userSchema.methods.generateJWT = function() {
     _id: this._id,
     name: this.name,
     exp: parseInt(exp.getTime() / 1000),
-  }, 'CHITECH');
+  }, 'MartensiticCHITECH');
 };
 
 mongoose.model('Users', userSchema);

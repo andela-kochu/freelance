@@ -7,7 +7,7 @@ var db = require('./config/mongoose')(),
 db.connection.on('error', console.error.bind(console, 'connection:error'));
 
 app.listen(port, function(){
-  console.log("server runnning at http://localhost:" + port);
+  console.log("server runnning at:" + port);
 });
 
 module.exports = app;

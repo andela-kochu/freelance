@@ -5,24 +5,25 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('Users');
+var auth = require('../controllers/auth.controllers');
 
 module.exports = function(app, passport){
-    function AuthCallback(strategy){
-      return function(req, res, next) {
-        passport.authenticate(strategy, function(err, user, redirectURL) {
-          if (err || !user) {
-            return res.redirect('/#!/signin');
-          }
-           return res.json({token: user.generateJWT()});
-            //return res.redirect(redirectURL || '/');
-        })(req, res, next);
-      };
-    };
   router.route('/auth/linkedin/callback')
-    .get(AuthCallback('linkedin'));
+    .get(auth.AuthCallback('linkedin'));
 
   router.route('/auth/linkedin')
     .get(passport.authenticate('linkedin'));
+
+    router.route('/auth/google/callback')
+    .get(auth.AuthCallback('google'));
+
+      // Setting the google oauth routes
+    router.route('/auth/google').get(passport.authenticate('google', {
+      scope: [
+        'https://www.googleapis.com/auth/userinfo.profile',
+        'https://www.googleapis.com/auth/userinfo.email'
+      ]
+    }));
 
   app.use('/api/v1', router);
 };

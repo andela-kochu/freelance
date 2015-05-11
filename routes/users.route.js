@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express');
 var ctrl = require('../controllers/users.controllers');
+var auth = require('../controllers/auth.controllers');
 var router = express.Router();
 
 module.exports = function(app) {
@@ -8,15 +9,14 @@ module.exports = function(app) {
     .post(ctrl.loginUser);
 
   router.route('/users')
-    .get(ctrl.verifyToken, ctrl.viewUsers)
+    .get(auth.verifyToken, ctrl.viewUsers)
     .post(ctrl.createUser)
-    .delete(ctrl.verifyToken, ctrl.deleteUsers);
+    .delete(auth.verifyToken, ctrl.deleteUsers);
 
   router.route('/users/:id')
-    .get(ctrl.viewOneUser)
-    .put(ctrl.updateUser)
-    .delete(ctrl.deleteOneUser);
-
+    .get(auth.verifyToken, ctrl.viewOneUser)
+    .put(auth.verifyToken, ctrl.updateUser)
+    .delete(auth.verifyToken, ctrl.deleteOneUser);
 
   app.use('/api/v1', router);
 };

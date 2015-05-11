@@ -32,7 +32,8 @@
     "passport-oauth": "^1.0.0",
     "method-override": "^2.3.2",
     "morgan": "^1.5.2",
-    "jsonwebtoken": "^5.0.0"
+    "jsonwebtoken": "^5.0.0",
+    "passport-google-oauth": "~0.1.5"
   },
   "devDependencies": {
     "jasmine-node": "^1.14.5",

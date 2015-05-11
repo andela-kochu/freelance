@@ -73,36 +73,12 @@ exports.loginUser = function(req, res, next) {
       return next(err);
     }
     if(user){
-      console.log(user)
         if(user.validPassword(req.body.password)){
           return res.json({token: user.generateJWT()});
         }
         else {
            return res.status(401).json({message: 'Enter a valid password'});
         }
-    } else {
-      return res.status(401).json(info);
     }
   })
 };
-
-exports.verifyToken = function(req, res, next) {
-    var token = req.headers['x-access-token'];
-    if(token){
-      jwt.verify(token, 'CHITECH', function(err, decoded){
-        if(err){
-          res.json({
-            message: 'Enter a valid token'
-          });
-        }
-        else{
-          req.decoded = decoded;
-          next();
-        }
-      });
-    }else{
-      return res.status(403).json({
-        message: 'Enter a token'
-      });
-    }
-  };
