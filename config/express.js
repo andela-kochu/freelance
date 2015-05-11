@@ -25,6 +25,10 @@ module.exports = function() {
   //bootstrap passport config
   require('./passport')();
 
+  app.get('/', function(request, response) {
+    response.send("fdhjdfjkdfjkdfjk");
+  });
+
   require('../routes/index')(app, passport);
   return app;
 };
