@@ -20,14 +20,25 @@ exports.viewJobs = function(req, res) {
     res.json(jobs);
   });
 };
-exports.viewOneJob = function(req, res) {
+exports.viewOneJob = function(req, res, next) {
   Job.find({
     _id: req.params.id
-  }, function(err, jobs) {
+  }, function(err, job) {
     if(err){
       return res.json(err);
     }
-    res.json(jobs);
+    job.populate('comments', function(err, comment) {
+      if (err) {
+        return next(err);
+      }
+      return next(comment);
+    });
+    job.populate('tags', function(err, tag) {
+      if (err) {
+        return next(err);
+      }
+      return next(tag);
+    });
   });
 };
 exports.updateJob = function(req, res) {

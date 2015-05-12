@@ -44,7 +44,7 @@ exports.viewOneUser = function(req, res) {
     _id: req.params.id
   }, function(err, users) {
     if(err){
-      return res.json(err);
+      return res.status(400).json(err);
     }
     res.status(200).json(users);
   });
@@ -54,9 +54,9 @@ exports.updateUser = function(req, res) {
     emailAddress: req.params.emailAddress
   }, req.body, function(err, user) {
     if(err){
-      return res.json(err);
+      return res.status(400).json(err);
     }
-    res.json(user);
+    res.status(200).json(user);
   });
 };
 exports.deleteUsers = function(req, res) {
