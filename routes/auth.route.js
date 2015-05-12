@@ -8,7 +8,6 @@ var User = mongoose.model('Users');
 var auth = require('../controllers/auth.controllers');
 
 module.exports = function(app, passport){
-
   //linkedin route
   router.route('/auth/linkedin/callback')
     .get(auth.AuthCallback('linkedin'));
@@ -24,7 +23,6 @@ module.exports = function(app, passport){
       'https://www.googleapis.com/auth/userinfo.email'
     ]
   }));
-
   app.use('/api/v1', router);
 };
 

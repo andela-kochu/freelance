@@ -34,10 +34,6 @@ var jobSchema = new Schema({
   tags: [{
     type:Schema.ObjectId,
     ref: 'Tags'
-  }],
-  technologies: [{
-    type:Schema.ObjectId,
-    ref: 'Technologies'
   }]
 });
 

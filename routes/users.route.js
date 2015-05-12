@@ -9,11 +9,11 @@ module.exports = function(app) {
     .post(ctrl.loginUser);
 
   router.route('/users')
-    .get(auth.verifyToken, ctrl.viewUsers)
+    .get(auth.authAdmin, ctrl.viewUsers)
     .post(ctrl.createUser)
-    .delete(auth.verifyToken, ctrl.deleteUsers);
+    .delete(auth.authAdmin, ctrl.deleteUsers);
 
-  router.route('/users/:id')
+  router.route('/users/one')
     .get(auth.verifyToken, ctrl.viewOneUser)
     .put(auth.verifyToken, ctrl.updateUser)
     .delete(auth.verifyToken, ctrl.deleteOneUser);

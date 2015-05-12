@@ -6,28 +6,27 @@ var mongoose = require('mongoose'),
     jwt = require('jsonwebtoken');
 
 exports.createUser = function(req, res, next) {
-  if(!req.body.emailAddress || !req.body.password || !req.body.name ) {
-    return res.status(400).json({message: 'Please fill out all fields; name, emailAddress, password'});
+  if(!req.body.emailAddress || !req.body.password || !req.body.firstname || !req.body.lastname) {
+    return res.status(400).json({message: 'Please fill out all fields; firstname, lastname, emailAddress, password'});
   }
   User.findOne({emailAddress: req.body.emailAddress}, function(err, user){
-      if (err){
-        console.log('err');
-        return next(err);
+    if (err){
+      return next(err);
+    }
+      if (user) {
+         return res.status(400).json({message: 'emailAddress aleady in our database, login instead'});
       }
-        if (user) {
-           return res.status(400).json({message: 'emailAddress aleady in our database, login instead'});
-        }
-        else {
-          var user = new User();
-          user.name = req.body.name;
-          user.emailAddress = req.body.emailAddress;
-          user.setPassword(req.body.password);
-          user.save(function (err){
-            if(err){
-              return next(err);
-              }
-            return res.status(200).json({token: user.generateJWT()})
-          });
+      else {
+        var user = new User();
+        user.name = req.body.firstname + " " + req.body.lastname;
+        user.emailAddress = req.body.emailAddress;
+        user.setPassword(req.body.password);
+        user.save(function (err){
+          if(err){
+            return next(err);
+            }
+          return res.status(200).json({token: user.generateJWT()})
+        });
       };
   });
 };
@@ -41,7 +40,7 @@ exports.viewUsers = function(req, res) {
 };
 exports.viewOneUser = function(req, res) {
   User.find({
-    _id: req.params.id
+    _id: req.decoded._id
   }, function(err, users) {
     if(err){
       return res.status(400).json(err);
@@ -51,7 +50,7 @@ exports.viewOneUser = function(req, res) {
 };
 exports.updateUser = function(req, res) {
   User.update({
-    emailAddress: req.params.emailAddress
+    _id: req.decoded._id
   }, req.body, function(err, user) {
     if(err){
       return res.status(400).json(err);
@@ -69,7 +68,7 @@ exports.deleteUsers = function(req, res) {
 };
 exports.deleteOneUser = function(req, res) {
   User.remove({
-    _id: req.params.id
+    _id: req.decoded._id
   }, function(err, user) {
     if(err){
       return res.status(400).json(err);

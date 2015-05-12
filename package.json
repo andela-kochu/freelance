@@ -4,8 +4,8 @@
   "description": "An application for developers to view and post jobs",
   "main": "server.js",
   "scripts": {
-    "test2": "jasmine-node --autotest spec/routes.spec/*",
-    "test": "jasmine-node --autotest spec/models.spec/",
+    "test2": "jasmine-node --autotest --config NODE_ENV test spec/routes.spec/*",
+    "test": "jasmine-node --autotest --config NODE_ENV test spec/models.spec/",
     "start": "nodemon server.js"
   },
   "repository": {
