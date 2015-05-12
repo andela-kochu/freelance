@@ -24,7 +24,7 @@ module.exports = function() {
   require('./passport')();
 
   app.get('/', function(request, response) {
-    response.send("Frelance App by CHITECH, <a href='http://github.com/andela-kochu/freelance'>GITHUB REPO</a>");
+    response.send("<br><br><br><center><h1>Freelance App by CHITECH</h1><br><a href='http://github.com/andela-kochu/freelance'>GITHUB REPO</a></center>");
   });
 
   require('../routes/index')(app, passport);
