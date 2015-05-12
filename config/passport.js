@@ -13,14 +13,14 @@ module.exports = function() {
         clientID: '77x4iyq8ntpmlf',
         clientSecret: 'ZJGdyoWS0E7jjat5',
         callbackURL: '/api/v1/auth/linkedin/callback',
-        scope: ['r_emailaddress', 'r_basicprofile'],
+        scope: ['r_emailaddress', 'r_fullprofile'],
         passReqToCallback: true,
         state: true
        },
       function(req, accessToken, refreshToken, profile, done) {
         profile.accessToken = accessToken;
         process.nextTick(function () {
-            console.log(profile)
+         //   console.log(profile._json, "these are my skills " + JSON.stringify(profile._json.skills.values))
             User.findOne({emailAddress: profile._json.emailAddress}, function(err, user){
               if (err){
                 console.log('err');
@@ -33,7 +33,8 @@ module.exports = function() {
                     User.create({
                       name: profile._json.formattedName,
                       emailAddress: profile._json.emailAddress,
-                      picture:  profile._json.pictureUrl
+                      picture:  profile._json.pictureUrl,
+                      skills: profile._json.skills.values
                     }, function(err, user){
                       if(err){
                         console.log('Could not create user');

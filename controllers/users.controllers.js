@@ -6,13 +6,29 @@ var mongoose = require('mongoose'),
     jwt = require('jsonwebtoken');
 
 exports.createUser = function(req, res, next) {
-  var user = new User();
-  user.name = req.body.name;
-  user.emailAddress = req.body.emailAddress;
-  user.setPassword(req.body.password)
-  user.save(function (err){
-    if(err){ return next(err); }
-    return res.json({token: user.generateJWT()})
+  if(!req.body.emailAddress || !req.body.password || !req.body.name ) {
+    return res.status(400).json({message: 'Please fill out all fields; name, emailAddress, password'});
+  }
+  User.findOne({emailAddress: req.body.emailAddress}, function(err, user){
+      if (err){
+        console.log('err');
+        return next(err);
+      }
+        if (user) {
+           return res.status(400).json({message: 'emailAddress aleady in our database, login instead'});
+        }
+        else {
+          var user = new User();
+          user.name = req.body.name;
+          user.emailAddress = req.body.emailAddress;
+          user.setPassword(req.body.password);
+          user.save(function (err){
+            if(err){
+              return next(err);
+              }
+            return res.json({token: user.generateJWT()})
+          });
+      };
   });
 };
 exports.viewUsers = function(req, res) {
@@ -35,7 +51,7 @@ exports.viewOneUser = function(req, res) {
 };
 exports.updateUser = function(req, res) {
   User.update({
-    _id: req.params.id
+    emailAddress: req.params.emailAddress
   }, req.body, function(err, user) {
     if(err){
       return res.json(err);
@@ -63,11 +79,11 @@ exports.deleteOneUser = function(req, res) {
 };
 
 exports.loginUser = function(req, res, next) {
-  if(!req.body.name || !req.body.password) {
-    return res.status(400).json({message: 'Please fill out all fields'});
+  if(!req.body.emailAddress || !req.body.password) {
+    return res.status(400).json({message: 'Please fill out all fields; emailAddress and password'});
   }
   User.findOne({
-    name: req.body.name
+    emailAddress: req.body.emailAddress
   }, function(err, user){
     if(err){
       return next(err);

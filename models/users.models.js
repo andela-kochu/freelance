@@ -33,10 +33,16 @@ var userSchema = new Schema({
   gender: {
     type: String
   },
+  skills: {
+    type:[Array]
+  },
   salt: {
     type: String
   },
   hash: {
+    type: String
+  },
+  token: {
     type: String
   }
 });
@@ -61,11 +67,13 @@ userSchema.methods.generateJWT = function() {
   var today = new Date();
   var exp = new Date(today);
   exp.setDate(today.getDate() + 60);
-  return jwt.sign({
+  var token =jwt.sign({
     _id: this._id,
     name: this.name,
     exp: parseInt(exp.getTime() / 1000),
   }, 'MartensiticCHITECH');
+  this.token = token;
+  return token;
 };
 
 mongoose.model('Users', userSchema);
