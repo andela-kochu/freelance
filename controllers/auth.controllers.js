@@ -5,11 +5,11 @@ var jwt = require('jsonwebtoken'),
 
 exports.AuthCallback = function (strategy){
   return function(req, res, next) {
-    passport.authenticate(strategy, function(err, user, redirectURL) {
+    passport.authenticate(strategy, function(err, user) {
       if (err || !user) {
         return res.redirect('/auth/' + strategy + "/");
       }
-      return res.json({token: user.generateJWT()});
+      return res.status(200).json({token: user.generateJWT()});
         //return res.redirect(redirectURL || '/');
     })(req, res, next);
   };
@@ -20,12 +20,12 @@ exports.verifyToken = function(req, res, next) {
   if(token){
     jwt.verify(token, 'MartensiticCHITECH', function(err, decoded){
       if(err){
-        res.json({
+        res.status(403).json({
           message: 'Enter a valid token'
         });
       }
       else{
-        req.decoded = decoded;
+        //req.decoded = decoded;
         next();
       }
     });

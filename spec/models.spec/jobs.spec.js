@@ -19,7 +19,7 @@ describe('JobSchema', function() {
                     count++;
                 }
             };
-        expect(count).toEqual(6);
+        expect(count).toEqual(10);
     });
     it('should have the validations', function() {
         var jobSchemaObject = Job.schema.paths;

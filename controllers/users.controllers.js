@@ -26,7 +26,7 @@ exports.createUser = function(req, res, next) {
             if(err){
               return next(err);
               }
-            return res.json({token: user.generateJWT()})
+            return res.status(200).json({token: user.generateJWT()})
           });
       };
   });
@@ -34,7 +34,7 @@ exports.createUser = function(req, res, next) {
 exports.viewUsers = function(req, res) {
   User.find(function(err, users) {
     if(err){
-      return res.json(err);
+      return res.status(400).json(err);
     }
     res.json(users);
   });
@@ -46,7 +46,7 @@ exports.viewOneUser = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(users);
+    res.status(200).json(users);
   });
 };
 exports.updateUser = function(req, res) {
@@ -62,9 +62,9 @@ exports.updateUser = function(req, res) {
 exports.deleteUsers = function(req, res) {
   User.remove(function(err, users) {
     if(err){
-      return res.json(err);
+      return res.status(400).json(err);
     }
-    res.json(users);
+    res.status(200).json(users);
   });
 };
 exports.deleteOneUser = function(req, res) {
@@ -72,9 +72,9 @@ exports.deleteOneUser = function(req, res) {
     _id: req.params.id
   }, function(err, user) {
     if(err){
-      return res.json(err);
+      return res.status(400).json(err);
     }
-    res.json(user);
+    res.status(200).json(user);
   });
 };
 
@@ -89,12 +89,12 @@ exports.loginUser = function(req, res, next) {
       return next(err);
     }
     if(user){
-        if(user.validPassword(req.body.password)){
-          return res.json({token: user.generateJWT()});
-        }
-        else {
-           return res.status(401).json({message: 'Enter a valid password'});
-        }
+      if(user.validPassword(req.body.password)){
+        return res.status(200).json({token: user.generateJWT()});
+      }
+      else {
+         return res.status(401).json({message: 'Enter a valid password'});
+      }
     }
   })
 };

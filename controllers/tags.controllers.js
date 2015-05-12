@@ -9,7 +9,7 @@ exports.createTag = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(tag);
+    res.status(200).json(tag);
   });
 };
 
@@ -18,7 +18,7 @@ exports.viewTags = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(tags);
+    res.status(200).json(tags);
   });
 };
 
@@ -27,7 +27,7 @@ exports.deleteTags = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(tags);
+    res.status(200).json(tags);
   });
 };
 exports.deleteOneTag = function(req, res) {
@@ -37,6 +37,6 @@ exports.deleteOneTag = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(tag);
+    res.status(200).json(tag);
   });
 };

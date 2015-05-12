@@ -22,7 +22,7 @@ describe('UserSchema', function() {
                     count++;
                 }
             };
-        expect(count).toEqual(9);
+        expect(count).toEqual(13);
     });
     it('should have the validations', function() {
         var userSchemaObject = User.schema.paths;

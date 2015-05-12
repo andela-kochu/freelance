@@ -19,6 +19,10 @@ var jobSchema = new Schema({
   url: {
     type: String
   },
+  created: {
+    type: Date,
+    default: Date.now
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'Users'

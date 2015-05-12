@@ -9,7 +9,7 @@ exports.createTechnology = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(technology);
+    res.status(200).json(technology);
   });
 };
 
@@ -18,7 +18,7 @@ exports.viewTechnologies = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(technologies);
+    res.status(200).json(technologies);
   });
 };
 exports.updateTechnologies = function(req, res) {
@@ -28,7 +28,7 @@ exports.updateTechnologies = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(tech);
+    res.status(200).json(tech);
   });
 };
 exports.deleteTechnologies = function(req, res) {
@@ -36,7 +36,7 @@ exports.deleteTechnologies = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(technologies);
+    res.status(200).json(technologies);
   });
 };
 exports.deleteOneTechnology = function(req, res) {
@@ -46,6 +46,6 @@ exports.deleteOneTechnology = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(tech);
+    res.status(200).json(tech);
   });
 };

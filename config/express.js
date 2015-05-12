@@ -20,13 +20,11 @@ module.exports = function() {
   }));
   app.use(methodOverride());
   app.use(session({ secret: 'keyboard cat' }));
-  //app.use(passport.session());
   app.use(passport.initialize());
-  //bootstrap passport config
   require('./passport')();
 
   app.get('/', function(request, response) {
-    response.send("App successfully deployed by CHITECH");
+    response.send("Frelance App by CHITECH, <a href='http://github.com/andela-kochu/freelance'>GITHUB REPO</a>");
   });
 
   require('../routes/index')(app, passport);
