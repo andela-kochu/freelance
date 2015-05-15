@@ -10,16 +10,19 @@ var jobSchema = new Schema({
     required: 'Name must be present'
   },
   slug: {
-    type: String,
-    required: 'Job slug can not be empty'
+    type: String
   },
   description: {
     type: String,
   },
-  url: {
+  tools: {
     type: String
   },
   created: {
+    type: Date,
+    default: Date.now
+  },
+  updated: {
     type: Date,
     default: Date.now
   },
