@@ -47,7 +47,7 @@ exports.verifyToken = function(req, res, next) {
 };
 
 exports.authAdmin = function(req, res, next) {
-  var adminPass = (req.body && req.body.access_pass) || req.headers["x-access-pass"];
+  var adminPass = (req.body && req.body.access_admin) || req.headers["x-access-admin"];
   if(adminPass === 'admin'){
     return next();
   }

@@ -1,11 +1,13 @@
 'use strict';
 
+require('../models/users.models');
 var mongoose = require('mongoose'),
     passport = require('passport'),
     LinkedInStrategy = require('passport-linkedin-oauth2').Strategy,
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     User = mongoose.model('Users'),
     config = require('./config');
+
 
 module.exports = function() {
     //linkendin strategy

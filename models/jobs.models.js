@@ -1,16 +1,13 @@
 'use strict';
 
-var mongoose = require('mongoose');
-
-var Schema = mongoose.Schema;
+var mongoose = require('mongoose'),
+    URLSlugs = require('mongoose-url-slugs'),
+    Schema = mongoose.Schema;
 
 var jobSchema = new Schema({
-  name: {
+  title: {
     type: String,
-    required: 'Name must be present'
-  },
-  slug: {
-    type: String
+    required: 'title must be present'
   },
   description: {
     type: String,
@@ -26,7 +23,7 @@ var jobSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  user: {
+  author: {
     type: Schema.ObjectId,
     ref: 'Users'
   },
@@ -39,5 +36,9 @@ var jobSchema = new Schema({
     ref: 'Tags'
   }]
 });
+jobSchema.plugin(URLSlugs('title', {
+      field: 'myslug'
+    }
+  ));
 
 mongoose.model('Jobs', jobSchema);

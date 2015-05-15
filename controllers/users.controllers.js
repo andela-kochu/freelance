@@ -6,8 +6,8 @@ var mongoose = require('mongoose'),
     jwt = require('jsonwebtoken');
 
 exports.createUser = function(req, res, next) {
-  if(!req.body.emailAddress || !req.body.password || !req.body.firstname || !req.body.lastname) {
-    return res.status(400).json({message: 'Please fill out all fields; firstname, lastname, emailAddress, password'});
+  if(!req.body.emailAddress || !req.body.password || !req.body.name) {
+    return res.status(400).json({message: 'Please fill out all fields; name, emailAddress, password'});
   }
   User.findOne({emailAddress: req.body.emailAddress}, function(err, user){
     if (err){
@@ -18,10 +18,10 @@ exports.createUser = function(req, res, next) {
       }
       else {
         var user = new User();
-        user.name = req.body.firstname + " " + req.body.lastname;
+        user.name = req.body.name;
         user.emailAddress = req.body.emailAddress;
         user.setPassword(req.body.password);
-        user.save(function (err){
+        user.save(function (err, user){
           if(err){
             return next(err);
             }

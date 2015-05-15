@@ -8,13 +8,11 @@ var mongoose = require('mongoose'),
 var userSchema = new Schema({
   name: {
     type: String,
-    required: 'Name must be present',
-    unique: "Name already exist, select a new one"
+    required: 'Name must be present'
   },
   emailAddress: {
     type: String,
-    required: 'Email address can not be empty',
-    unique: "Name already exist, select a new one"
+    required: 'Email address can not be empty'
   },
   phoneNumber: {
     type: Number,
