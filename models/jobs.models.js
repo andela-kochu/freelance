@@ -1,8 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    URLSlugs = require('mongoose-url-slugs'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    URLSlugs = require('mongoose-url-slugs');
 
 var jobSchema = new Schema({
   title: {
@@ -36,9 +36,6 @@ var jobSchema = new Schema({
     ref: 'Tags'
   }]
 });
-jobSchema.plugin(URLSlugs('title', {
-      field: 'myslug'
-    }
-  ));
+jobSchema.plugin(URLSlugs('title description'));
 
 mongoose.model('Jobs', jobSchema);

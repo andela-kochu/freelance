@@ -24,7 +24,7 @@ exports.createUser = function(req, res, next) {
         user.save(function (err, user){
           if(err){
             return next(err);
-            }
+          }
           return res.status(200).json({token: user.generateJWT()})
         });
       };

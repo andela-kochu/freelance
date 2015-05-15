@@ -5,15 +5,23 @@ var mongoose = require('mongoose');
 var Job = mongoose.model('Jobs');
 
 exports.createJob = function(req, res) {
-  Job.create(req.body, function(err, job) {
-    if(err){
-      return res.json(err);
-    }
-    res.json(job);
-  });
+  Job.create({
+              author: req.decoded._id,
+              title: req.body.title,
+              description: req.body.description,
+              tools: req.body.tools
+            },
+            function(err, job) {
+              if(err){
+                return res.json(err);
+              }
+              return res.json(job);
+            });
 };
 exports.viewJobs = function(req, res) {
-  Job.find(function(err, jobs) {
+  Job.find()
+  .populate('author')
+  .exec(function(err, jobs) {
     if(err){
       return res.json(err);
     }
@@ -21,24 +29,16 @@ exports.viewJobs = function(req, res) {
   });
 };
 exports.viewOneJob = function(req, res, next) {
-  Job.find({
-    _id: req.params.id
-  }, function(err, job) {
+  Job.findOne({
+    '_id': req.params.id
+  })
+  .populate('author')
+  .exec(function(err, job) {
     if(err){
       return res.json(err);
-    }
-    job.populate('comments', function(err, comment) {
-      if (err) {
-        return next(err);
-      }
-      return next(comment);
-    });
-    job.populate('tags', function(err, tag) {
-      if (err) {
-        return next(err);
-      }
-      return next(tag);
-    });
+    };
+    return res.json(job);
+
   });
 };
 exports.updateJob = function(req, res) {
