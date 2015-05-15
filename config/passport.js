@@ -10,12 +10,12 @@ var mongoose = require('mongoose'),
 module.exports = function() {
     //linkendin strategy
   passport.use(new LinkedInStrategy({
-    clientID: '77x4iyq8ntpmlf',
-    clientSecret: 'ZJGdyoWS0E7jjat5',
-    callbackURL: '/api/v1/auth/linkedin/callback',
-    scope: ['r_emailaddress', 'r_fullprofile'],
-    passReqToCallback: true,
-    state: true
+      clientID: '77x4iyq8ntpmlf',
+      clientSecret: 'ZJGdyoWS0E7jjat5',
+      callbackURL: '/api/v1/auth/linkedin/callback',
+      scope: ['r_emailaddress', 'r_basicprofile'],
+      passReqToCallback: true,
+      state: true
     },
     function(req, accessToken, refreshToken, profile, done) {
       profile.accessToken = accessToken;
