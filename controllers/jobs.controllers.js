@@ -41,6 +41,18 @@ exports.viewOneJob = function(req, res, next) {
 
   });
 };
+exports.viewUserJob = function(req, res, next) {
+  Job.find({
+    'author' : req.decoded._id
+  })
+  .exec(function(err, job) {
+    if(err){
+      return res.json(err);
+    };
+    return res.json(job);
+
+  });
+};
 exports.updateJob = function(req, res) {
   Job.update({
     _id: req.params.id

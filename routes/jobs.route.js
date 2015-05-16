@@ -10,6 +10,9 @@ module.exports = function(app) {
     .post(auth.verifyToken, ctrl.createJob)
     .delete(auth.verifyToken, ctrl.deleteJobs);
 
+  router.route('/user/jobs')
+    .get(auth.verifyToken, ctrl.viewUserJob);
+
   router.route('/jobs/:id')
     .get(auth.verifyToken, ctrl.viewOneJob)
     .put(auth.verifyToken, ctrl.updateJob)
