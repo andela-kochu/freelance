@@ -9,7 +9,8 @@ exports.createJob = function(req, res) {
               author: req.decoded._id,
               title: req.body.title,
               description: req.body.description,
-              tools: req.body.tools
+              tools: req.body.tools,
+              skills: req.body.skills
             },
             function(err, job) {
               if(err){
@@ -30,7 +31,7 @@ exports.viewJobs = function(req, res) {
 };
 exports.viewOneJob = function(req, res, next) {
   Job.findOne({
-    '_id': req.params.id
+    'slug': req.params.slug
   })
   .populate('author')
   .exec(function(err, job) {

@@ -13,7 +13,7 @@ module.exports = function(app) {
   router.route('/user/jobs')
     .get(auth.verifyToken, ctrl.viewUserJob);
 
-  router.route('/jobs/:id')
+  router.route('/jobs/:slug')
     .get(ctrl.viewOneJob)
     .put(auth.verifyToken, ctrl.updateJob)
     .delete(auth.verifyToken, ctrl.deleteOneJob);

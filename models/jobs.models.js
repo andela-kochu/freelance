@@ -15,6 +15,9 @@ var jobSchema = new Schema({
   tools: {
     type: String
   },
+  skills: {
+    type: String
+  },
   created: {
     type: Date,
     default: Date.now
