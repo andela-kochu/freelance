@@ -14,7 +14,7 @@ module.exports = function(app) {
     .get(auth.verifyToken, ctrl.viewUserJob);
 
   router.route('/jobs/:id')
-    .get(auth.verifyToken, ctrl.viewOneJob)
+    .get(ctrl.viewOneJob)
     .put(auth.verifyToken, ctrl.updateJob)
     .delete(auth.verifyToken, ctrl.deleteOneJob);
   app.use('/api/v1', router);
