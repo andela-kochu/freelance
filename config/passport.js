@@ -1,6 +1,6 @@
 'use strict';
 
-require('../models/users.models');
+//require('../models/users.models');
 var mongoose = require('mongoose'),
     passport = require('passport'),
     LinkedInStrategy = require('passport-linkedin-oauth2').Strategy,
