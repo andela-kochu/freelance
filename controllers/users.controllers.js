@@ -23,7 +23,7 @@ exports.createUser = function(req, res, next) {
         user.setPassword(req.body.password);
         user.save(function (err, user){
           if(err){
-            return next(err);
+            return res.status(400).json(err);
           }
           return res.status(200).json({token: user.generateJWT()});
         });
