@@ -14,7 +14,7 @@ exports.createUser = function(req, res, next) {
       return next(err);
     }
       if (user) {
-         return res.status(400).json({message: 'emailAddress aleady in our database, login instead'});
+         return res.status(400).json({message: 'emailAddress already in our database, login instead'});
       }
       else {
         var user = new User();

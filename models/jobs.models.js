@@ -36,6 +36,6 @@ var jobSchema = new Schema({
     ref: 'Tags'
   }]
 });
-jobSchema.plugin(URLSlugs('title description'));
+jobSchema.plugin(URLSlugs('title'));
 
 mongoose.model('Jobs', jobSchema);
