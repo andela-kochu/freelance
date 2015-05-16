@@ -21,6 +21,11 @@ module.exports = function() {
   app.use(methodOverride());
   app.use(session({ secret: 'keyboard cat' }));
   app.use(passport.initialize());
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    next();
+  });
   require('./passport')();
 
   app.get('/', function(request, response) {
