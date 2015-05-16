@@ -25,9 +25,9 @@ exports.createUser = function(req, res, next) {
           if(err){
             return next(err);
           }
-          return res.status(200).json({token: user.generateJWT()})
+          return res.status(200).json({token: user.generateJWT()});
         });
-      };
+      }
   });
 };
 exports.viewUsers = function(req, res) {

@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    URLSlugs = require('mongoose-url-slugs');
+    slug = require('mongoose-url-slugs');
 
 var jobSchema = new Schema({
   title: {
@@ -10,7 +10,7 @@ var jobSchema = new Schema({
     required: 'title must be present'
   },
   description: {
-    type: String,
+    type: String
   },
   tools: {
     type: String
@@ -36,6 +36,6 @@ var jobSchema = new Schema({
     ref: 'Tags'
   }]
 });
-jobSchema.plugin(URLSlugs('title'));
+jobSchema.plugin(slug('title'));
 
 mongoose.model('Jobs', jobSchema);

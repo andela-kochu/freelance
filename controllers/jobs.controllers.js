@@ -36,7 +36,7 @@ exports.viewOneJob = function(req, res, next) {
   .exec(function(err, job) {
     if(err){
       return res.json(err);
-    };
+    }
     return res.json(job);
 
   });
@@ -48,7 +48,7 @@ exports.viewUserJob = function(req, res, next) {
   .exec(function(err, job) {
     if(err){
       return res.json(err);
-    };
+    }
     return res.json(job);
 
   });
