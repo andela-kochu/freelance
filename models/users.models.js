@@ -14,9 +14,6 @@ var userSchema = new Schema({
     type: String,
     required: 'Email address can not be empty'
   },
-  linkedId: {
-    type: String
-  },
   phoneNumber: {
     type: Number,
     max: 15,
@@ -28,41 +25,65 @@ var userSchema = new Schema({
   interests: {
     type: String
   },
-  password: {
+  picture: {
     type: String
-    // default: '',
-    // validate: [validateLocalStrategyPassword, 'Password should be longer']
+  },
+  gender: {
+    type: String
+  },
+  skills: {
+    type:[Array]
   },
   salt: {
     type: String
+  },
+  hash: {
+    type: String
+  },
+  token: {
+    type: String
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  updated: {
+    type: Date
+  },
+  roles: {
+    type: [{
+      type: String,
+      enum: ['user', 'admin']
+    }],
+    default: ['user']
   }
 });
-/**
- * Create instance method for hashing a password
- */
+
 userSchema.methods.setPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
-
-/**
- * Create instance method for validating password
- */
 userSchema.methods.validPassword = function(password){
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash;
 };
-
 userSchema.methods.generateJWT = function() {
-  // set expiration to 60 days
   var today = new Date();
   var exp = new Date(today);
   exp.setDate(today.getDate() + 60);
-  return jwt.sign({
+  var token = jwt.sign({
     _id: this._id,
     name: this.name,
+    emailAddress: this.emailAddress,
     exp: parseInt(exp.getTime() / 1000),
-  }, 'CHITECH');
+  }, 'MartensiticCHITECH');
+  this.token = token;
+  return token;
 };
+
+/*userSchema.path('emailAddress').validate(function (email) {
+  var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  return emailRegex.test(email.text); // Assuming email has a text attribute
+}, 'The e-mail field cannot be empty.');*/
 
 mongoose.model('Users', userSchema);

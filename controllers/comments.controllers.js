@@ -7,7 +7,7 @@ var Comment = mongoose.model('Comments');
 exports.createComment = function(req, res) {
   Comment.create(req.body, function(err, comment) {
     if(err){
-      return res.json(err);
+      return res.status(403).json(err);
     }
     res.json(comment);
   });
@@ -16,18 +16,18 @@ exports.createComment = function(req, res) {
 exports.viewComments = function(req, res) {
   Comment.find(function(err, comments) {
     if(err){
-      return res.json(err);
+      return res.status(403).json(err);
     }
-    res.json(comments);
+    res.status(200).json(comments);
   });
 };
 
 exports.deleteComments = function(req, res) {
   Comment.remove(function(err, comments) {
     if(err){
-      return res.json(err);
+      return res.status(403).json(err);
     }
-    res.json(comments);
+    res.status(200).json(comments);
   });
 };
 exports.deleteOneComment = function(req, res) {
@@ -37,6 +37,6 @@ exports.deleteOneComment = function(req, res) {
     if(err){
       return res.json(err);
     }
-    res.json(comment);
+    res.status(200).json(comment);
   });
 };
