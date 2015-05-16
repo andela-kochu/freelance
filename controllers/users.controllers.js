@@ -85,7 +85,7 @@ exports.loginUser = function(req, res, next) {
     emailAddress: req.body.emailAddress
   }, function(err, user){
     if(err){
-      return next(err);
+      return res.status(400).json(err);
     }
     if(user){
       if(user.validPassword(req.body.password)){
@@ -95,5 +95,8 @@ exports.loginUser = function(req, res, next) {
          return res.status(401).json({message: 'Enter a valid password'});
       }
     }
-  })
+    else{
+       return res.status(401).json({message: 'The Email address you entered is not in our database, Signup first'});
+    }
+  });
 };
