@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 
 module.exports = function() {
     //linkendin strategy
-  passport.use(new LinkedInStrategy({
+ /* passport.use(new LinkedInStrategy({
       clientID: '77x4iyq8ntpmlf',
       clientSecret: 'ZJGdyoWS0E7jjat5',
       callbackURL: '/api/v1/auth/linkedin/callback',
@@ -47,7 +47,7 @@ module.exports = function() {
           });
         });
       }
-  ));
+  ));*/
 
   // Use google strategy
   passport.use(new GoogleStrategy({
