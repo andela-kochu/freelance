@@ -96,7 +96,7 @@ exports.loginUser = function(req, res, next) {
       }
     }
     else{
-       return res.status(401).json({message: 'The Email address you entered is not in our database, Signup first'});
+       return res.status(401).json({message: 'Email address not in our database'});
     }
   });
 };
