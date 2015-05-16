@@ -20,14 +20,14 @@ exports.AuthCallback = function (strategy) {
 exports.verifyToken = function(req, res, next) {
   var token = (req.body && req.body.access_token) || req.headers["x-access-token"];
   if(token){
-    jwt.verify(token, 'MartensiticCHITECH', function(err, payload) {
+    jwt.verify(token, 'MartensiticCHITECH', function(err, decoded) {
       if(err) {
         res.status(403).json({
           message: 'Enter a valid token'
         });
       }
       else {
-        User.findOne({ '_id': payload._id }, function(err, user){
+        User.findOne({ '_id': decoded._id }, function(err, user){
           if (!err) {
             req.decoded = user;
             if (!req.decoded) {
