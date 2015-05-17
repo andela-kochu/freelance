@@ -8,11 +8,21 @@ var jwt = require('jsonwebtoken'),
 
 exports.AuthCallback = function (strategy) {
   return function(req, res, next) {
-    passport.authenticate(strategy, function(err, user) {
+    passport.authenticate(strategy, function(err, user, redirectURL) {
       if (err || !user) {
-        return res.status(401).json(err);
+        console.log(err)
+        return res.redirect('/#/signin');
       }
-      return res.status(200).json({token: user.generateJWT()});
+      var token = user.generateJWT();
+      res.writeHead(301, {
+        'token': token,
+        'Location': '/#/profile',
+         'Content-Type': 'text/plain'
+        //add other headers here...
+        });
+     // res.write("Looked everywhere, but couldn't find that page at all!\n");
+      res.end();
+     // return res.status(200).json({token: user.generateJWT()});
     })(req, res, next);
   };
 };
