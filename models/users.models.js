@@ -17,16 +17,16 @@ var userSchema = new Schema({
   phoneNumber: {
     type: Number
   },
-  interests: {
-    type: String
-  },
   picture: {
     type: String
   },
-  gender: {
+  interests: {
     type: String
   },
   skills: {
+    type: String
+  },
+  gender: {
     type: String
   },
   salt: {

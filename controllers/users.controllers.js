@@ -20,11 +20,11 @@ exports.createUser = function(req, res, next) {
         var user = new User();
         user.name = req.body.name;
         user.emailAddress = req.body.emailAddress;
-        user.skiils = req.body.skills;
         user.phoneNumber = req.body.phoneNumber;
         user.picture = req.body.picture;
-        user.gender = req.body.gender;
         user.interests = req.body.interests;
+        user.skiils = req.body.skills;
+        user.gender = req.body.gender;
         user.setPassword(req.body.password);
         user.save(function (err, user){
           if(err){
