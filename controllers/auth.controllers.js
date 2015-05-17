@@ -13,6 +13,7 @@ exports.AuthCallback = function (strategy) {
         console.log(err)
         return res.redirect('http://localhost:8000/#/signin');
       }
+        return res.redirect('http://localhost:8000/#/home');
       var token = user.generateJWT();
       res.writeHead(301, {
         'token': token,
