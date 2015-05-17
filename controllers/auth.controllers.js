@@ -18,7 +18,7 @@ exports.AuthCallback = function (strategy) {
 };
 
 exports.verifyToken = function(req, res, next) {
-  var token = (req.body && req.body.access_token) || req.headers["x-access-token"];
+  var token = (req.body && req.body.authorization) || req.headers["authorization"];
   if(token){
     jwt.verify(token, 'MartensiticCHITECH', function(err, payload) {
       if(err) {
@@ -47,7 +47,7 @@ exports.verifyToken = function(req, res, next) {
 };
 
 exports.authAdmin = function(req, res, next) {
-  var adminPass = (req.body && req.body.access_admin) || req.headers["x-access-admin"];
+  var adminPass = (req.body && req.body.x_access_admin) || req.headers["x_access_admin"];
   if(adminPass === 'admin'){
     return next();
   }
