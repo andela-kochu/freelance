@@ -17,16 +17,19 @@ exports.createUser = function(req, res, next) {
          return res.status(400).json({message: 'emailAddress already in our database, login instead'});
       }
       else {
-        /*var user = new User();
+        var user = new User();
         user.name = req.body.name;
         user.emailAddress = req.body.emailAddress;
+        user.skiils = req.body.skills;
+        user.phoneNumber = req.body.phoneNumber;
+        user.picture = req.body.picture;
+        user.gender = req.body.gender;
+        user.interests = req.body.interests;
         user.setPassword(req.body.password);
-        user.save(function (err, user){*/
-        User.create(req.body, function(err, user){
+        user.save(function (err, user){
           if(err){
             return res.status(400).json(err);
           }
-          user.setPassword(req.body.password);
           return res.status(200).json({token: user.generateJWT()});
         });
       }
