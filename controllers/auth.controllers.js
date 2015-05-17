@@ -16,7 +16,7 @@ exports.AuthCallback = function (strategy) {
       var token = user.generateJWT();
       res.writeHead(301, {
         'token': token,
-        'Location': 'http://localhost:8000/#/profile',
+        'Location': 'http://localhost:8000/#/signin',
          'Content-Type': 'text/plain'
         //add other headers here...
         });
