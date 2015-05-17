@@ -39,7 +39,7 @@ exports.viewUsers = function(req, res) {
   });
 };
 exports.viewOneUser = function(req, res) {
-  User.find({
+  User.findOne({
     _id: req.decoded._id
   }, function(err, users) {
     if(err){
