@@ -19,9 +19,6 @@ var userSchema = new Schema({
     max: 15,
     min: 11
   },
-  imgUrl: {
-    type: String
-  },
   interests: {
     type: String
   },
@@ -32,7 +29,7 @@ var userSchema = new Schema({
     type: String
   },
   skills: {
-    type:[Array]
+    type: String
   },
   salt: {
     type: String
