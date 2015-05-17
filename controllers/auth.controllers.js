@@ -10,7 +10,7 @@ exports.AuthCallback = function (strategy) {
   return function(req, res, next) {
     passport.authenticate(strategy, function(err, user) {
       if (err || !user) {
-        return res.redirect('/auth/' + 'strategy' + "/");
+        return res.status(401).json(err);
       }
       return res.status(200).json({token: user.generateJWT()});
     })(req, res, next);

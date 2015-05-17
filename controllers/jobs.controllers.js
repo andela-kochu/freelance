@@ -56,7 +56,7 @@ exports.viewUserJob = function(req, res, next) {
 };
 exports.updateJob = function(req, res) {
   Job.update({
-    _id: req.params.id
+    'slug': req.params.slug
   },  req.body, function(err, job) {
     if(err){
       return res.json(err);
@@ -74,7 +74,7 @@ exports.deleteJobs = function(req, res) {
 };
 exports.deleteOneJob = function(req, res) {
   Job.remove({
-    _id: req.params.id
+    'slug': req.params.slug
   }, function(err, job) {
     if(err){
       return res.json(err);
