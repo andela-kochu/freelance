@@ -15,9 +15,7 @@ var userSchema = new Schema({
     required: 'Email address can not be empty'
   },
   phoneNumber: {
-    type: Number,
-    max: 15,
-    min: 11
+    type: Number
   },
   interests: {
     type: String
