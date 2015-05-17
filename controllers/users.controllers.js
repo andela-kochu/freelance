@@ -23,7 +23,7 @@ exports.createUser = function(req, res, next) {
         user.phoneNumber = req.body.phoneNumber;
         user.picture = req.body.picture;
         user.interests = req.body.interests;
-        user.skiils = req.body.skills;
+        user.skill = req.body.skills;
         user.gender = req.body.gender;
         user.setPassword(req.body.password);
         user.save(function (err, user){

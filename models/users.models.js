@@ -23,7 +23,7 @@ var userSchema = new Schema({
   interests: {
     type: String
   },
-  skills: {
+  skill: {
     type: String
   },
   gender: {
