@@ -41,11 +41,11 @@ exports.viewUsers = function(req, res) {
 exports.viewOneUser = function(req, res) {
   User.findOne({
     _id: req.decoded._id
-  }, function(err, users) {
+  }, function(err, user) {
     if(err){
       return res.status(400).json(err);
     }
-    res.status(200).json(users);
+    res.status(200).json(user);
   });
 };
 exports.updateUser = function(req, res) {
