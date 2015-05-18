@@ -18,6 +18,12 @@ var jobSchema = new Schema({
   skills: {
     type: String
   },
+  applicants: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Users'
+    }
+  ],
   created: {
     type: Date,
     default: Date.now

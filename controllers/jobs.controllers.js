@@ -39,9 +39,29 @@ exports.viewOneJob = function(req, res, next) {
       return res.json(err);
     }
     return res.json(job);
-
   });
 };
+
+exports.applyForJob = function(req, res, next) {
+  Job.findOne({
+    'slug': req.params.slug
+  },
+  function(err, job) {
+    if(err){
+      return res.json(err);
+    }
+    Job.update({
+      'slug': req.params.slug
+    },  req.body, function(err, job) {
+    if(err){
+      return res.json(err);
+    }
+      return res.json(job);
+    });
+ //   return res.json(job);
+  });
+};
+
 exports.viewUserJob = function(req, res, next) {
   Job.find({
     'author' : req.decoded._id

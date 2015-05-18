@@ -21,7 +21,7 @@ module.exports = function(app, passport){
     scope: [
       'https://www.googleapis.com/auth/userinfo.profile',
       'https://www.googleapis.com/auth/userinfo.email'
-    ]
+          ]
   }));
   app.use('/api/v1', router);
 };

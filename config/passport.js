@@ -32,12 +32,15 @@ module.exports = function() {
                   return done(null, user);
               }
               else {
-                User.create({
-                  name: profile._json.formattedName,
-                  emailAddress: profile._json.emailAddress,
-                  picture:  profile._json.pictureUrl
-                  // skill: profile._json.skills.values
-                }, function(err, user) {
+                var user = new User();
+                // User.create({
+                user.name = profile._json.formattedName;
+                user.emailAddress = profile._json.emailAddress;
+                user.picture = profile._json.pictureUrl;
+                user.skill = profile._json.skills.values;
+                // },
+                user.setPassword('social');
+                user.save(function(err, user){
                   if(err){
                     console.log('Could not create user');
                   }
@@ -68,20 +71,23 @@ module.exports = function() {
             return done(null, user);
           }
           else {
-            User.create({
-              name: profile._json.name,
-              emailAddress: profile._json.email,
-              picture:  profile._json.picture,
-              gender:  profile._json.gender
-            }, function(err, user){
-              if(err){
-                console.log('Could not create user');
-              }
-              return done(null, user);
-            });
-          }
+            var user = new User();
+              // User.create({
+              user.name =  profile._json.name;
+              user.emailAddress =  profile._json.email;
+              user.picture = profile._json.picture;
+              user.gender =   profile._json.gender;
+              // },
+              user.setPassword('social');
+              user.save(function(err, user){
+                if(err){
+                  console.log('Could not create user');
+                }
+                return done(null, user);
+              });
+            }
+          });
         });
-      });
-    }
-  ));
+      }
+    ));
 };
