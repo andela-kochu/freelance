@@ -13,6 +13,9 @@ module.exports = function(app) {
   router.route('/user/jobs')
     .get(auth.verifyToken, ctrl.viewUserJob);
 
+  router.route('/jobs/:slug/apply')
+    .put(auth.verifyToken, ctrl.applyForJob);
+
   router.route('/jobs/:slug')
     .get(ctrl.viewOneJob)
     .put(auth.verifyToken, ctrl.updateJob)

@@ -10,7 +10,6 @@ var mongoose = require('mongoose'),
 
 
 module.exports = function() {
-    //linkendin strategy
   passport.use(new LinkedInStrategy({
       clientID: '77x4iyq8ntpmlf',
       clientSecret: 'ZJGdyoWS0E7jjat5',
@@ -21,11 +20,9 @@ module.exports = function() {
     },
     function(req, accessToken, refreshToken, profile, done) {
       profile.accessToken = accessToken;
-                console.log(profile)
       process.nextTick(function () {
           User.findOne({emailAddress: profile._json.emailAddress}, function(err, user){
             if (err){
-              console.log('err');
               return done(err);
             }
               if (user) {
@@ -33,12 +30,10 @@ module.exports = function() {
               }
               else {
                 var user = new User();
-                // User.create({
                 user.name = profile._json.formattedName;
                 user.emailAddress = profile._json.emailAddress;
                 user.picture = profile._json.pictureUrl;
                 user.skill = profile._json.skills.values;
-                // },
                 user.setPassword('social');
                 user.save(function(err, user){
                   if(err){
@@ -68,7 +63,8 @@ module.exports = function() {
             return done(err);
             }
           if (user) {
-            return done(null, user);
+            var token = user.generateJWT();
+            return done(null, user, token);
           }
           else {
             var user = new User();
@@ -83,7 +79,8 @@ module.exports = function() {
                 if(err){
                   console.log('Could not create user');
                 }
-                return done(null, user);
+                var token = user.generateJWT();
+                return done(null, user, token);
               });
             }
           });

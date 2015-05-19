@@ -47,4 +47,9 @@ var jobSchema = new Schema({
 });
 jobSchema.plugin(slug('title'));
 
+jobSchema.methods.applyFor = function(author, cb){
+  this.applicants.push(author);
+  this.save(cb);
+};
+
 mongoose.model('Jobs', jobSchema);

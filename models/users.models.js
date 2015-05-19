@@ -35,6 +35,12 @@ var userSchema = new Schema({
   hash: {
     type: String
   },
+  appliedJobs: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Jobs'
+    }
+  ],
   token: {
     type: String
   },
