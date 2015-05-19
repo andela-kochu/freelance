@@ -15,7 +15,7 @@ var jobSchema = new Schema({
   tools: {
     type: String
   },
-  skills: {
+  skill: {
     type: String
   },
   applicants: [

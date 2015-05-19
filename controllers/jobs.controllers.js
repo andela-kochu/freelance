@@ -10,7 +10,7 @@ exports.createJob = function(req, res) {
               title: req.body.title,
               description: req.body.description,
               tools: req.body.tools,
-              skills: req.body.skills
+              skill: req.body.skill
             },
             function(err, job) {
               if(err){
