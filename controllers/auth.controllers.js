@@ -8,12 +8,12 @@ var jwt = require('jsonwebtoken'),
 
 exports.AuthCallback = function (strategy) {
   return function(req, res, next) {
-    passport.authenticate(strategy, function(err, user, token) {
+    passport.authenticate(strategy, function(err, user) {
       if (err || !user) {
         console.log(err)
         return res.redirect('http://localhost:8000/#/signin');
       }
-      // var token = user.generateJWT();
+      var token = user.generateJWT();
       res.writeHead(301, {
         'token': token,
         'user': user.name,

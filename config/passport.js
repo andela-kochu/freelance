@@ -10,6 +10,7 @@ var mongoose = require('mongoose'),
 
 
 module.exports = function() {
+    //linkendin strategy
   passport.use(new LinkedInStrategy({
       clientID: '77x4iyq8ntpmlf',
       clientSecret: 'ZJGdyoWS0E7jjat5',
@@ -63,8 +64,7 @@ module.exports = function() {
             return done(err);
             }
           if (user) {
-            var token = user.generateJWT();
-            return done(null, user, token);
+            return done(null, user);
           }
           else {
             var user = new User();
@@ -79,8 +79,7 @@ module.exports = function() {
                 if(err){
                   console.log('Could not create user');
                 }
-                var token = user.generateJWT();
-                return done(null, user, token);
+                return done(null, user);
               });
             }
           });
