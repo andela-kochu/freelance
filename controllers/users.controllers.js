@@ -30,7 +30,10 @@ exports.createUser = function(req, res, next) {
           if(err){
             return res.status(400).json(err);
           }
-          return res.status(200).json({token: user.generateJWT()});
+          return res.status(200).json({
+            token: user.generateJWT(),
+            user: user.name
+          });
         });
       }
   });
@@ -94,7 +97,10 @@ exports.loginUser = function(req, res, next) {
     }
     if(user){
       if(user.validPassword(req.body.password)){
-        return res.status(200).json({token: user.generateJWT()});
+        return res.status(200).json({
+          token: user.generateJWT(),
+          user: user.name
+        });
       }
       else {
          return res.status(401).json({message: 'Enter a valid password'});
