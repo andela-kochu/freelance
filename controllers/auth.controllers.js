@@ -17,7 +17,7 @@ exports.AuthCallback = function (strategy) {
       res.writeHead(301, {
         'token': token,
         'user': user.name,
-        'Location': 'http://localhost:8000/#/signin',
+        'Location': 'http://localhost:8000/#/signin?token=' + token + '&user=' + user.name,
          'Content-Type': 'text/plain'
         //add other headers here...
         });
