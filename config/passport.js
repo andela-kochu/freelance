@@ -30,13 +30,12 @@ module.exports = function() {
                   return done(null, user);
               }
               else {
-                var user = new User();
-                user.name = profile._json.formattedName;
-                user.emailAddress = profile._json.emailAddress;
-                user.picture = profile._json.pictureUrl;
-                user.skill = profile._json.skills.values;
-                // user.setPassword('social');
-                user.save(function(err, user){
+                var newUser = new User();
+                newUser.name = profile._json.formattedName;
+                newUser.emailAddress = profile._json.emailAddress;
+                newUser.picture = profile._json.pictureUrl;
+                newUser.skill = profile._json.skills.values;
+                newUser.save(function(err, user){
                   if(err){
                     console.log('Could not create user');
                   }
@@ -67,15 +66,12 @@ module.exports = function() {
             return done(null, user);
           }
           else {
-            var user = new User();
-              // User.create({
-              user.name =  profile._json.name;
-              user.emailAddress =  profile._json.email;
-              user.picture = profile._json.picture;
-              user.gender =   profile._json.gender;
-              // },
-              // user.setPassword('social');
-              user.save(function(err, user){
+            var newUser = new User();
+              newUser.name =  profile._json.name;
+              newUser.emailAddress =  profile._json.email;
+              newUser.picture = profile._json.picture;
+              newUser.gender =   profile._json.gender;
+              newUser.save(function(err, user){
                 if(err){
                   console.log('Could not create user');
                 }
