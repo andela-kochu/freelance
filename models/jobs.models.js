@@ -52,4 +52,9 @@ jobSchema.methods.applyFor = function(author, cb){
   this.save(cb);
 };
 
+jobSchema.methods.postComment = function(comment, cb){
+  this.comments.push(comment);
+  this.save(cb);
+};
+
 mongoose.model('Jobs', jobSchema);

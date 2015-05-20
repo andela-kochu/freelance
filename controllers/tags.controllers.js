@@ -1,6 +1,6 @@
 'use strict';
 
-require('../models/tags.models')
+require('../models/tags.models');
 var mongoose = require('mongoose');
 var Tag = mongoose.model('Tags');
 
