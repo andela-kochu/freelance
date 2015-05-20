@@ -30,17 +30,17 @@ module.exports = function() {
                   return done(null, user);
               }
               else {
-                var user = new User();
+                // var user = new User();
                 user.name = profile._json.formattedName;
                 user.emailAddress = profile._json.emailAddress;
                 user.picture = profile._json.pictureUrl;
-                user.skill = profile._json.skills.values;
+                // user.skill = profile._json.skills.values;
                 user.save(function(err, user){
                   if(err){
                     console.log('Could not create user');
                   }
                   console.log(user)
-                    return done(null, user);
+                  return done(null, user);
                 });
               }
           });
