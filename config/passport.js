@@ -39,7 +39,7 @@ module.exports = function() {
                   if(err){
                     console.log('Could not create user');
                   }
-                  console.log(user)
+                  console.log(user);
                     return done(null, user);
                 });
               }
