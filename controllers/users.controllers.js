@@ -17,7 +17,7 @@ exports.createUser = function(req, res, next) {
          return res.status(400).json({message: 'emailAddress already in our database, login instead'});
       }
       else {
-        var user = new User();
+        // var user = new User();
         user.name = req.body.name;
         user.emailAddress = req.body.emailAddress;
         user.phoneNumber = req.body.phoneNumber;
@@ -65,7 +65,6 @@ exports.updateUser = function(req, res) {
       return res.status(400).json(err);
     }
     user.name = req.body.name;
-    user.emailAddress = req.body.emailAddress;
     user.phoneNumber = req.body.phoneNumber;
     user.picture = req.body.picture;
     user.interests = req.body.interests;
