@@ -23,7 +23,7 @@ exports.createUser = function(req, res, next) {
         user.phoneNumber = req.body.phoneNumber;
         user.picture = req.body.picture;
         user.interests = req.body.interests;
-        user.skill = req.body.skills;
+        user.skill = req.body.skill;
         user.gender = req.body.gender;
         user.setPassword(req.body.password);
         user.save(function (err, user){
@@ -57,13 +57,27 @@ exports.viewOneUser = function(req, res) {
   });
 };
 exports.updateUser = function(req, res) {
-  User.update({
+  User.findOne({
     _id: req.decoded._id
-  }, req.body, function(err, user) {
+  },
+  function(err, user) {
     if(err){
       return res.status(400).json(err);
     }
-    res.status(200).json(user);
+    user.name = req.body.name;
+    user.emailAddress = req.body.emailAddress;
+    user.phoneNumber = req.body.phoneNumber;
+    user.picture = req.body.picture;
+    user.interests = req.body.interests;
+    user.skill = req.body.skill;
+    user.gender = req.body.gender;
+    user.setPassword(req.body.password);
+    user.save(function (err, user){
+      if(err){
+        return res.status(400).json(err);
+      }
+      return res.status(200).json(user);
+    });
   });
 };
 exports.deleteUsers = function(req, res) {
