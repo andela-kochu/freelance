@@ -12,12 +12,9 @@ var commentSchema = new Schema({
   content: {
     type: String
   },
-  url: {
-    type: String
-  },
-  job: {
+  jobId: {
     type: Schema.Types.ObjectId,
-    ref: 'jobs'
+    ref: 'Jobs'
   }
 });
 
