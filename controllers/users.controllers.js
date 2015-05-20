@@ -66,7 +66,6 @@ exports.updateUser = function(req, res) {
     }
     user.name = req.body.name;
     user.phoneNumber = req.body.phoneNumber;
-    user.picture = req.body.picture;
     user.interests = req.body.interests;
     user.skill = req.body.skill;
     user.gender = req.body.gender;
