@@ -14,6 +14,7 @@
     "exports": false,
     "console": false,
     "Materialize": false,
-    "process": false
+    "process": false,
+    "browser": false
   }
 }
