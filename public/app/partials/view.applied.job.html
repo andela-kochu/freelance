@@ -1,0 +1,50 @@
+<md-content layout layout-align="center center" class="first">
+  <md-card flex-gt-md="80" flex>
+    <div layout-gt-md='row' layout='column'>
+      <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
+        <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
+        <input name="search" ng-model="query">
+      </md-input-container>
+      <div layout flex flex-gt-md="35">
+        <md-icon flex="10" md-svg-icon="assets/img/icons/ic_sort_24px.svg"></md-icon> &nbsp;
+        <md-select flex placeholder="Sort" ng-model="orderProp" style="text-align: center;">
+          <md-option  selected="selected" value="-created">New</md-option>
+          <md-option value="created">Old</md-option>
+        </md-select>
+      </div>
+    </div>
+    <md-subheader class="md-primary customsub" style="background-color: rgb(13, 45, 45) !important;">
+      My Application Board
+    </md-subheader>
+    <md-content flex style="height: 20%;">
+    <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+      <md-list flex>
+      <md-list-item flex ng-repeat="job in myjobs = (appliedJobs | orderBy: orderProp | filter: query)">
+        <div flex layout layout-padding layout-margin class="md-list-item-text" style="line-height: 1.5;">
+          <div flex>
+            <strong>
+              <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
+            </strong>
+          </div>
+          <div flex layout layout-align='end center'>
+            <md-button ng-href="#/jobs/{{job.slug}}" flex-md="15" class="md-raised md-primary md-hue-2">
+              View Job
+            </md-button>
+            <md-button ng-href="#" flex-md="15" class="md-raised md-warn md-hue-2">
+              WithDraw
+            </md-button>
+          </div>
+        </div>
+         <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+      </md-list>
+    </md-content>
+    <div layout  layout-margin layout-align="center center" ng-hide="myjobs.length">
+      <md-toolbar flex="50"class="md-warn">
+        <div layout layout-align="center center" class="md-toolbar-tools">
+           No Applied Job Found
+        </div>
+      </md-toolbar>
+    </div>
+  </md-card>
+</md-content>

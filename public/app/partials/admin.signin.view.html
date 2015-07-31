@@ -1,0 +1,38 @@
+<md-content layout layout-align="center center" layout-margin class="first">
+  <md-card flex-gt-md="40" flex>
+    <md-subheader layout-padding class="md-primary md-hue-2 customsub">
+      <center>
+        <h1 class="md-title">Welcome SuperAdmin, Enter your crendentials</h1>
+      </center>
+    </md-subheader>
+    <md-toolbar class="md-warn" layout-padding ng-hide="hidemsg">
+      <center>
+        <h3 class="md-title">{{msg}}</h3>
+      </center>
+    </md-toolbar>
+    <md-card-content>
+      <form name="loginForm">
+        <md-input-container md-no-float>
+          <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+          <input name="emailName" ng-model="email" type="email" placeholder="Email (required)" ng-required="true">
+          <div ng-messages="loginForm.emailName.$error">
+            <!-- <div ng-message="required">This field is required</div> -->
+            <div ng-message="email">Type in a valid email address</div>
+          </div>
+        </md-input-container>
+        <md-input-container md-no-float>
+          <md-icon md-svg-src="assets/img/icons/padlock.svg" style="display:inline-block;"></md-icon>
+          <input name="passName" ng-model="password" type="password" placeholder="Password (required)" ng-required="true">
+          <div ng-messages="loginForm.passName.$error">
+            <!-- <div ng-message="required">This field is required</div> -->
+          </div>
+        </md-input-container>
+        <div class="md-actions" layout="row" layout-align="center center">
+          <md-button id="loginBtn" ng-disabled="loginForm.$invalid" flex ng-click="adminLogIn()" class="md-raised md-primary md-hue-2">Login</md-button>
+        </div>
+      </form>
+      <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
+      </md-progress-linear>
+    </md-card-content>
+  </md-card>
+</md-content>

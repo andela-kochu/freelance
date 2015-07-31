@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="freelanceApp">
+<head>
+  <title>Freelance App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="libs/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic"/>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="https://www.freelancer.com/favicon.ico" type="image/ico">
+</head>
+<body ng-controller='homeCtrl'>
+  <!-- Navigation Bar -->
+  <div ng-include="'app/partials/header.view.html'"></div>
+  <!-- View from different routes -->
+  <ui-view></ui-view>
+
+  <!-- footer -->
+  <div class="footer">
+    <!-- <center><a href="#/admin">admin</a> &nbsp; --><center><span>©copyright 2015 &nbsp; Designed by </span><a href="http://github.com/andela-kochu">CHITECH</a>
+    </center>
+  </div>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="libs/angular-animate/angular-animate.min.js"></script>
+  <script src="libs/angular-aria/angular-aria.min.js"></script>
+  <script src="libs/angular-messages/angular-messages.min.js"></script>
+  <script src="libs/angular-material/angular-material.min.js"></script>
+  <script src="libs/ngstorage/ngStorage.js"></script>
+
+  <script src="app/app.js"></script>
+  <script src="app/services/toast.service.js"></script>
+  <script src="app/colorConfig.js"></script>
+  <script src="app/services/sidenav.service.js"></script>
+  <script src="app/services/auth.service.js"></script>
+  <script src="app/services/job.service.js"></script>
+  <script src="app/services/user.service.js"></script>
+  <script src="app/filters/truncate.filter.js"></script>
+  <script src="app/directives/compare.directives.js"></script>
+  <script src="app/controllers/home.controller.js"></script>
+  <script src="app/controllers/job.controller.js"></script>
+  <script src="app/controllers/job_single.controller.js"></script>
+  <script src="app/controllers/user.controller.js"></script>
+  <script src="app/controllers/profile.controller.js"></script>
+  <script src="app/controllers/applied.job.controller.js"></script>
+  <script src="app/controllers/admin.profile.controller.js"></script>
+  <script src="app/controllers/posted_job.controller.js"></script>
+  <script src="app/controllers/admin.posted_job.controller.js"></script>
+  <script src="app/controllers/admin.users.controller.js"></script>
+</body>
+</html>

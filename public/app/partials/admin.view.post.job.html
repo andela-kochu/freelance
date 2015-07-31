@@ -1,0 +1,196 @@
+<md-content layout layout-align="center center" class="first">
+  <md-card flex-gt-md="80" flex>
+    <div layout-gt-md='row' layout='column'>
+      <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
+        <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
+        <input name="search" ng-model="query">
+      </md-input-container>
+      <div layout flex flex-gt-md="35">
+        <md-icon flex="10" md-svg-icon="assets/img/icons/ic_sort_24px.svg"></md-icon> &nbsp;
+        <md-select flex placeholder="Sort" ng-model="orderProp" style="text-align: center;">
+          <md-option  selected="selected" value="-created">New</md-option>
+          <md-option value="created">Old</md-option>
+        </md-select>
+      </div>
+    </div>
+    <md-subheader class="md-primary customsub" style="background-color: rgb(13, 45, 45) !important;">
+      My Admin Jobs Board
+    </md-subheader>
+    <md-content flex style="height: 20%;">
+    <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+      <md-list flex>
+      <md-list-item flex ng-repeat="job in jobs = (allJobs | orderBy: orderProp | filter: query)">
+        <md-tabs md-dynamic-height md-selected="selectedIndex" md-border-bottom>
+          <md-tab label="JOB">
+            <div layout-padding layout-margin class="md-list-item-text md-whiteframe-z1" style="line-height: 1.5;">
+              <div>
+                <strong>
+                  <h3 ng-href="#/jobs/{{job._id}}">{{job.title | sentenceCase}}</h3>
+                </strong>
+              </div>
+              <div ng-show="job.skill">
+                <strong>Required Skiils:</strong>&nbsp;{{job.skill | truncate:50}}
+              </div>
+              <div ng-show="job.tools">
+                <strong>Tools:</strong>&nbsp;{{job.tools | truncate:50}}
+              </div>
+              <div style="
+                padding: 8px;
+                background: rgba(0, 0, 0, 0.04) !important;
+                ">
+                <div ng-show="job.description">
+                  <strong>Description:</strong>
+                  <div class="md-primary description" flex offset="5">
+                    {{job.description | truncate:150}}
+                  </div>
+                </div>
+                <div layout-gt-md layout-sm="column"  layout-align='center center'>
+                  <p flex><strong >Posted:</strong>&nbsp;{{job.created | date: medium}}</p>
+                </div>
+                <div layout layout-align='center center'>
+                  <md-button ng-click="viewJob(job.slug)" flex-md="15" class="md-raised md-primary md-hue-2">
+                    View Job
+                  </md-button>
+                  <md-button ng-click="delete = true" flex-md="15" ng-hide="delete" class="md-raised md-warn md-hue-2">
+                    Delete Job
+                  </md-button>
+                  <md-button ng-click="delete = false" ng-show="delete" flex-md="15" class="md-raised md-primary md-hue-2">
+                    Cancel
+                  </md-button>
+                  <md-button ng-click="deleteJob(job.slug)" ng-show="delete" flex-md="15" class="md-raised md-warn md-hue-2">
+                    Confirm Delete
+                  </md-button>
+                </div>
+              </div>
+            </div>
+          </md-tab>
+          <md-tab label="Edit Job">
+            <form layout-margin name="postJobForm" style="overflow-y: scroll;" ng-init="getJob(job.slug)">
+              <md-input-container  class="md-icon-float" style="margin-top: 0.03em;">
+                <label>Title</label>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon> -->
+                <input name='title' ng-model="job.title" type="text"  ng-required="true" value="{{job.title}}">
+                <div ng-messages="postJobForm.title.$error">
+                  <div ng-message="required">*</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                <label>Description</label>
+                <textarea name='description' ng-model="job.description" min="100" ng-required="true">
+                  {{job.description}}
+                </textarea>
+                <div ng-messages="postJobForm.description.$error">
+                  <div ng-message="required">*</div>
+                </div>
+              </md-input-container>
+              <md-input-container>
+                 <label>Tools</label>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon> -->
+                <input name="tools" ng-model="job.tools" type="text" value="{{job.tools}}">
+              </md-input-container>
+              <md-input-container>
+                 <label>Required Skills</label>
+                  <!-- <md-icon md-svg-src="assets/img/icons/ic_flare_24px.svg" style="display:inline-block;"></md-icon> -->
+                <input ng-model="job.skill" type="text" value="{{job.skill}}">
+              </md-input-container>
+              <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+              <div class="md-actions" flex layout="column" layout-align="center center">
+                <md-button type="submit" flex flex-md="50" ng-disabled="postJobForm.$invalid" ng-click="editJob(job.slug, job)"
+                      class="md-raised md-primary md-hue-2">
+                      Submit
+                </md-button>
+              <md-divider></md-divider>
+              </div>
+            </form>
+          </md-tab>
+          <md-tab label="Applicants">
+            </md-progress-linear>
+            <md-list flex>
+              <md-list-item layout="column" flex ng-repeat="applicant in  show = (job.applicants | filter: query)">
+                  <div layout layout-align="center center"
+                      layout-margin class="md-headline"
+                      >
+                    <strong>
+                     {{applicant.name}}
+                    </strong>
+                  </div>
+                  <div layout layout-sm="column" layout-margin class="md-title" layout layout-align="center center">
+                    <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+                    <span>
+                      &nbsp;
+                     {{applicant.emailAddress}}
+                    </span>
+                  </div>
+                  <div ng-show="applicant.phoneNumber"
+                          layout layout-sm="column"
+                          layout-margin class="md-title"
+                          layout layout-align="center center">
+                    <md-icon  md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
+                    <span>
+                      &nbsp;
+                      0{{applicant.phoneNumber}}
+                    </span>
+                  </div>
+                  <div layout layout-sm="column"
+                       ng-show="applicant.interests"
+                       layout-margin class="md-title"
+                       layout layout-align="center center">
+                    <strong>Interests:</strong>
+                    <span>
+                      &nbsp;
+                      {{applicant.interests}}
+                    </span>
+                  </div>
+                  <div layout layout-sm="column"
+                       ng-show="applicant.skill"
+                       layout-margin class="md-title"
+                       layout layout-align="center center">
+                    <strong>Skills:</strong>
+                    <center>
+                      &nbsp;
+                      {{applicant.skill}}
+                    </center>
+                  </div>
+                  <div layout layout-margin class="md-title" ng-show="applicant.gender">
+                    <md-icon  md-svg-src="assets/img/icons/gender-512px.svg"></md-icon>
+                    &nbsp;
+                    &nbsp;
+                    <span>
+                      {{applicant.gender}}
+                    </span>
+                  </div>
+                  <div layout layout-margin class="md-title" ng-show="profile.created">
+                    <md-icon  md-svg-src="assets/img/icons/ic_access_time_24px.svg"></md-icon>
+                    &nbsp;
+                    &nbsp;
+                    <span>
+                      {{applicant.created | date: medium}}
+                    </span>
+                  </div>
+                </md-list-item>
+              </md-list>
+              <md-toolbar layout layout-margin
+                          layout-align="center center"
+                          class="md-warn"
+                          ng-hide="show.length"
+                          style="margin-bottom: 5em;margin-top: 5em; padding: 1em; background-color: rgb(229, 100, 90);"
+                          >
+                No one has applied for:
+                <span style="background-color: rgba(0, 0, 0, 0.32); margin-top: 1em; padding: .5em; border-radius: .5em;">
+                  {{job.title | sentenceCase}}
+                </span>
+              </md-toolbar>
+          </md-tab>
+        </md-tabs>
+      </md-list-item>
+      </md-list>
+    <div layout  layout-margin layout-align="center center" ng-hide="jobs.length">
+      <md-toolbar flex="50"class="md-warn">
+        <div layout layout-align="center center" class="md-toolbar-tools">
+           No Job Found
+        </div>
+      </md-toolbar>
+    </div>
+    </md-content>
+  </md-card>
+</md-content>

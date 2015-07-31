@@ -1,0 +1,42 @@
+<md-dialog aria-label="Update Profile">
+    <md-subheader class="customsub" style="background-color: black !important">
+        <center>Post a Job</center>
+    </md-subheader>
+      <form layout-margin name="postJobForm" style="overflow-y: scroll;">
+        <md-input-container  class="md-icon-float" style="margin-top: 0.03em;">
+          <label>Title</label>
+          <!-- <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon> -->
+          <input name='title' ng-model="title" type="text" ng-required="true">
+          <div ng-messages="postJobForm.title.$error">
+            <div ng-message="required">*</div>
+          </div>
+        </md-input-container>
+        <md-input-container >
+           <label>Description</label>
+          <!-- <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon> -->
+          <textarea name='description' ng-model="description" min="100" placeholder="Description" ng-required="true"> </textarea>
+          <div ng-messages="postJobForm.description.$error">
+            <div ng-message="required">*</div>
+          </div>
+        </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon> -->
+          <input name="tools" ng-model="tools" type="text" placeholder="Tools">
+        </md-input-container>
+        <md-input-container>
+          <!-- <md-icon md-svg-src="assets/img/icons/ic_flare_24px.svg" style="display:inline-block;"></md-icon> -->
+          <input ng-model="skill" type="text" placeholder="Required Skills" >
+        </md-input-container>
+        <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+
+        <div class="md-actions" layout="row" layout-align="center center">
+          <md-button   flex ng-disabled="postJobForm.$invalid" ng-click="submitJob()"
+              class="md-raised md-primary md-hue-2">
+              Submit
+          </md-button>
+           <md-button class="md-raised md-warn" style="background-color: red !important; color:white!important; pos" ng-click="cancel()">cancel</md-button>
+        </div>
+      </form>
+<!-- </md-dialog-content> -->
+</md-dialog>
+

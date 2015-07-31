@@ -1,0 +1,57 @@
+<md-dialog aria-label="Update Profile">
+    <md-subheader class="customsub" style="background-color: black !important">
+        <center>Update Profile</center>
+    </md-subheader>
+      <form layout-margin name="signupForm" style="overflow-y: scroll;">
+        <md-input-container  class="md-icon-float" style="margin-top: 0.03em;">
+          <label>Name</label>
+          <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon>
+          <input name='name' ng-model="name" type="text" ng-required="true" value="{{profile.name}}">
+          <div ng-messages="signupForm.name.$error">
+            <div ng-message="required">*</div>
+          </div>
+        </md-input-container>
+        <md-input-container >
+          <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon>
+          <input name='password' ng-model="password" type="password" placeholder="Password" ng-required="true">
+          <div ng-messages="signupForm.password.$error">
+            <div ng-message="required">*</div>
+          </div>
+        </md-input-container>
+        <md-input-container>
+          <md-icon md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
+          <input name="phone" ng-model="phone" type="number" placeholder="Phone Number" ng-minlength="10" ng-maxlength="13">
+          <div ng-messages="signupForm.phone.$error">
+            <div ng-message="minlength">Enter a minimun of 10 figures</div>
+            <div ng-message="maxlength">Can not be more than 13</div>
+            <div ng-message="number">Only figures are accepted</div>
+          </div>
+        </md-input-container>
+        <md-input-container>
+          <md-icon md-svg-src="assets/img/icons/ic_flare_24px.svg" style="display:inline-block;"></md-icon>
+          <input ng-model="interests" type="text" placeholder="Interests seperated by 'comma'" >
+        </md-input-container>
+        <md-input-container >
+          <md-icon md-svg-src="assets/img/icons/ic_wb_incandescent_24px.svg" class="email"></md-icon>
+          <input ng-model="skills" type="text" placeholder="Skills">
+        </md-input-container>
+        <div layout="row">
+          <md-icon md-svg-src="assets/img/icons/gender-512px.svg"></md-icon>&nbsp;
+          <md-select flex placeholder="Gender" ng-model="gender">
+            <md-option value="Female">Female</md-option>
+            <md-option value="Male">Male</md-option>
+          </md-select>
+        </div>
+        <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+
+        <div class="md-actions" layout="row" layout-align="center center">
+          <md-button   flex ng-disabled="signupForm.$invalid" ng-click="editProf()"
+              class="md-raised md-primary md-hue-2">
+              Update
+          </md-button>
+           <md-button class="md-raised md-warn" style="background-color: red !important; color:white!important; pos" ng-click="cancel()">cancel</md-button>
+        </div>
+      </form>
+<!-- </md-dialog-content> -->
+</md-dialog>
+

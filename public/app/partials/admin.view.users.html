@@ -1,0 +1,82 @@
+<md-content layout layout-align="center center" class="first">
+  <md-card flex-gt-md="80" flex>
+    <div layout-gt-md='row' layout='column'>
+      <md-input-container layout-padding flex class="searchJobs md-primary" style="padding-bottom: 0px;">
+        <label class="label1"><md-icon md-svg-icon="assets/img/icons/search.svg"></md-icon> &nbsp; &nbsp; Filter</label>
+        <input name="search" ng-model="query">
+      </md-input-container>
+      <div layout flex flex-gt-md="35">
+        <md-icon flex="10" md-svg-icon="assets/img/icons/ic_sort_24px.svg"></md-icon> &nbsp;
+        <md-select flex placeholder="Sort" ng-model="orderProp" style="text-align: center;">
+          <md-option  selected="selected" value="-created">New</md-option>
+          <md-option value="created">Old</md-option>
+        </md-select>
+      </div>
+    </div>
+    <md-subheader class="md-primary customsub" style="background-color: rgb(13, 45, 45) !important;">
+      My Admin Users Board
+    </md-subheader>
+    <!-- {{allUsers}} -->
+    <md-content flex style="height: 20%;">
+    <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary"></md-progress-linear>
+      <md-list flex>
+      <md-list-item flex ng-repeat="user in users = (allUsers | orderBy: orderProp | filter: query)">
+        <div flex layout-padding layout-margin layout-align="center center" class="md-list-item-text md-whiteframe-z1" style="line-height: 1.5;">
+          <div>
+            <strong>
+              <h3 ng-href="#/jobs/{{job._id}}">{{user.name | sentenceCase}}</h3>
+            </strong>
+          </div>
+          <div ng-show="user.emailAddress">
+            <strong>Email:</strong>&nbsp;{{user.emailAddress | truncate:50}}
+          </div>
+          <div ng-show="user.skill">
+            <strong>Skill:</strong>&nbsp;{{user.skill | truncate:50}}
+          </div>
+          <div ng-show="user.gender">
+            <strong>Gender:</strong>&nbsp;{{user.gender | truncate:50}}
+          </div>
+          <div ng-hide="user.isAdmin">
+            <strong>Status:</strong>&nbsp;User
+          </div>
+          <div ng-show="user.isAdmin">
+            <strong>Status:</strong>&nbsp;Admin
+          </div>
+          <div style="
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.04) !important;
+            ">
+            <div ng-show="user.picture">
+              <!-- <strong>Picture:</strong> -->
+              <div class="md-primary description" flex offset="5">
+                <img ng-src="{{user.picture}}" style="width: 15%;"class="md-avatar" alt="{{user.name}}"/>
+              </div>
+            </div>
+            <div layout-gt-md layout-sm="column"  layout-align='center center'>
+              <p flex><strong >Last Updated:</strong>&nbsp;{{user.created | date: medium}}</p>
+              <div layout layout-align='center center'>
+                <md-button ng-click="delete = true" flex-md="15" ng-hide="delete" class="md-raised md-warn md-hue-2">
+                  Delete User
+                </md-button>
+                <md-button ng-click="delete = false" ng-show="delete" flex-md="15" class="md-raised md-primary md-hue-2">
+                  Cancel
+                </md-button>
+                <md-button ng-click="deleteUser(user._id)" ng-show="delete" flex-md="15" class="md-raised md-warn md-hue-2">
+                  Confirm Delete
+                </md-button>
+              </div>
+            </div>
+            </div>
+        </div>
+      </md-list-item>
+      </md-list>
+    <div layout layout-margin layout-align="center center" ng-hide="users.length">
+      <md-toolbar flex="50"class="md-warn">
+        <div layout layout-align="center center" class="md-toolbar-tools">
+           No User Found
+        </div>
+      </md-toolbar>
+    </div>
+    </md-content>
+  </md-card>
+</md-content>

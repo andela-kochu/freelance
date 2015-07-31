@@ -1,0 +1,121 @@
+<md-content layout layout-align="center center" class="first">
+<md-card layout flex flex-gt-md="70">
+    <md-progress-linear md-mode="indeterminate" ng-hide="hideOutProg" class="md-primary">
+    </md-progress-linear>
+    <md-grid-list
+          md-cols-sm="1" md-cols-md="2" md-cols-gt-md="3"
+          md-row-height-gt-md="1:1" md-row-height="2:2"
+          md-gutter="12px" md-gutter-gt-sm="8px" >
+      <md-grid-tile class="gray"
+          md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+        <md-content class="md-whiteframe-z1 profile" layout="column">
+           <md-grid-tile-header class="profile-disp">
+            <h3>Admin Profile</h3>
+          </md-grid-tile-header>
+          <div layout layout-align="center center" layout-margin class="md-display-1">
+            <strong>
+             {{profile.name}}
+            </strong>
+          </div>
+          <md-divider></md-divider>
+          <div class="md-title">
+            <span>
+              <md-icon md-svg-src="assets/img/icons/ic_email_24px.svg" class="email"></md-icon>
+            </span>
+            <span>
+              &nbsp;
+             {{profile.emailAddress}}
+            </span>
+          </div>
+          <div class="md-title">
+            <span>
+              <md-icon  md-svg-src="assets/img/icons/ic_phone_24px.svg"></md-icon>
+            </span>
+            <span>
+              &nbsp;
+              <span ng-show='profile.phoneNumber'>0</span>{{profile.phoneNumber}}
+            </span>
+          </div>
+          <div layout class="md-title">
+            <span>
+              <strong>Interests:</strong>
+            </span>
+            <span>
+              &nbsp;
+              {{profile.interests}}
+            </span>
+          </div>
+          <div layout class="md-title">
+            <span>
+              <strong>Skills:</strong>
+            </span>
+            <center>
+              &nbsp;
+              {{profile.skill}}
+            </center>
+          </div>
+          <div layout class="md-title">
+            <span>
+              <md-icon  md-svg-src="assets/img/icons/gender-512px.svg"></md-icon>
+            </span>
+            &nbsp;
+            &nbsp;
+            <span>
+              {{profile.gender}}
+            </span>
+          </div>
+          <div layout class="md-title">
+            <span>
+              <md-icon  md-svg-src="assets/img/icons/ic_access_time_24px.svg"></md-icon>
+            </span>
+            &nbsp;
+            &nbsp;
+            <span>
+              {{profile.created | date: medium}}
+            </span>
+          </div>
+        </md-content>
+      </md-grid-tile>
+      <md-grid-tile class="yellow">
+        <md-grid-tile-header>
+          <h3>Profile Picture</h3>
+        </md-grid-tile-header>
+       <div layout layout-align="center center" layout-margin ng-hide="profile.picture">
+          <img ng-src="assets/img/avatar.png" class="md-avatar" alt="{{profile.name}}" />
+        </div>
+        <div layout layout-align="center center" layout-margin ng-show="profile.picture" style="width: 60%;">
+            <img ng-src="{{profile.picture}}" class="md-avatar" alt="{{profile.name}}" />
+        </div>
+      </md-grid-tile>
+      <md-grid-tile class="red"
+          md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+        <md-content flex layout="column" layout-margin style="height: 81%;">
+          <md-button ng-click="editUser($event)"
+                  title="login"
+                  aria-label="login"
+                  class="md-primary md-raised md-hue-1 md-whiteframe-z1"
+                  >
+            Update Profile
+          </md-button>
+          <md-button
+                  ng-click="postJob($event)"
+                  class="md-primary md-raised md-hue-1">
+            Post a Job
+          </md-button>
+          <md-button
+                  ng-href="#/admin-profile/all-jobs"
+                  class="md-primary md-raised md-hue-1">
+            View All Posted Jobs
+          </md-button>
+          <md-button
+                  ng-href="#/admin-profile/all-users"
+                  title="login"
+                  aria-label="login"
+                  class="md-primary md-raised md-hue-1">
+            View all Users
+          </md-button>
+        </md-content>
+      </md-grid-tile>
+    </md-grid-list>
+    </md-card>
+</md-content>

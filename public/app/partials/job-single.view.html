@@ -1,0 +1,81 @@
+<md-content layout layout-align="center center" layout-margin class="first">
+  <md-card flex-gt-md="60" flex>
+      <md-subheader class="customsub" layout-padding layout layout-align='center center'>
+        <center>
+          <strong>{{single_job.title | sentenceCase}}</strong>
+        </center>
+      </md-subheader>
+      <div layout-margin layout-padding class="md-list-item-text" style="padding: 10px; line-height: 2;">
+          <div ng-show="single_job.skills">
+            <strong layout layout-align='center center'>Required Skiils</strong>{{single_job.skills}}
+          </div>
+          <div ng-show="single_job.tools">
+            <strong>Tools</strong><br>{{single_job.tools}}
+          </div>
+          <md-divider></md-divider>
+          <strong ng-show="single_job.description">Description:</strong>
+          <div style="
+            padding: 4px;
+            background: rgba(0, 0, 0, 0.02) !important;
+            "
+            ng-show="single_job.description"
+            >
+            <div class="md-primary description" flex offset="1">
+              {{single_job.description}}
+            </div>
+          </div>
+          <div layout-align='center center' ng-show="single_job.created">
+            <p flex><strong >Posted:</strong>&nbsp;{{single_job.created | date: medium}}</p>
+          </div>
+          <div layout-align='center center' ng-show="single_job.created">
+            <p flex><strong >Author:</strong>&nbsp;{{single_job.author.name | sentenceCase}}</p>
+          </div>
+          <div layout layout-align='center center'>
+            <md-button  flex="40" ng-click='applyForJob(single_job.slug);' class="md-raised md-primary md-hue-2">Apply</md-button>
+          </div>
+        </div>
+      <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
+      </md-progress-linear>
+      <div class="comments">Comment on the above Job</div>
+        <form name="commentForm">
+          <div style="padding: 3px;">
+            <md-input-container >
+            <label>Title</label>
+              <input ng-model="comment.title" type="text" ng-required="true" min="5">
+            </md-input-container>
+          </div>
+          <div style="padding: 3px;">
+            <md-input-container style="padding-bottom: 0;">
+            <label>Content</label>
+              <textarea ng-model="comment.content" ng-required="true" ng-min="15"></textarea>
+            </md-input-container>
+          </div>
+          <div layout layout-align='start center'>
+            <md-button type='submit' flex="30" ng-disabled="commentForm.$invalid" ng-click="postComment(single_job._id, comment, single_job.slug)" class="md-primary md-raised md-hue-1">Submit</md-button>
+          </div>
+        </form>
+         <div style="background: rgba(0, 0, 0, 0.04) !important; "ng-show="comm.length">
+            <md-subheader class="customsub">Posted Comments:</md-subheader>
+            <md-list flex>
+            <md-list-item ng-repeat="jobcomment in comm = single_job.comments">
+              <div flex>
+                <div layout>
+                  <h3>Title: &nbsp;{{jobcomment.title}}</h3>
+                </div>
+                <strong>Content:</strong>
+                <div style="
+                  padding: 8px;
+                  background: rgba(0, 0, 0, 0.02) !important;
+                  margin-bottom: 1em;"
+                  >
+                  <div class="md-primary description">
+                    {{jobcomment.content}}
+                  </div>
+                </div>
+              </div>
+            <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+            </md-list>
+          </div>
+   </md-card>
+</md-content>
