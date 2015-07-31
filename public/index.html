@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="freelanceApp">
+
 <head>
   <title>Freelance App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="stylesheet" href="libs/angular-material/angular-material.css"/>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic"/>
+  <link rel="stylesheet" href="libs/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic" />
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <link rel="icon" href="https://www.freelancer.com/favicon.ico" type="image/ico">
 </head>
+
 <body ng-controller='homeCtrl'>
   <!-- Navigation Bar -->
   <div ng-include="'app/partials/header.view.html'"></div>
   <!-- View from different routes -->
   <ui-view></ui-view>
-
   <!-- footer -->
   <div class="footer">
-    <!-- <center><a href="#/admin">admin</a> &nbsp; --><center><span>©copyright 2015 &nbsp; Designed by </span><a href="http://github.com/andela-kochu">CHITECH</a>
+    <!-- <center><a href="#/admin">admin</a> &nbsp; -->
+    <center><span>©copyright 2015 &nbsp; Designed by </span><a href="http://github.com/andela-kochu">CHITECH</a>
     </center>
   </div>
   <script src="libs/angular/angular.js"></script>
@@ -27,7 +29,6 @@
   <script src="libs/angular-messages/angular-messages.min.js"></script>
   <script src="libs/angular-material/angular-material.min.js"></script>
   <script src="libs/ngstorage/ngStorage.js"></script>
-
   <script src="app/app.js"></script>
   <script src="app/services/toast.service.js"></script>
   <script src="app/colorConfig.js"></script>
@@ -47,5 +48,22 @@
   <script src="app/controllers/posted_job.controller.js"></script>
   <script src="app/controllers/admin.posted_job.controller.js"></script>
   <script src="app/controllers/admin.users.controller.js"></script>
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-65825191-1', 'auto');
+  ga('send', 'pageview');
+  </script>
 </body>
+
 </html>
