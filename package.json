@@ -8,6 +8,7 @@
     "test": "jasmine-node --autotest --config NODE_ENV test spec/models.spec/",
     "start": "nodemon server.js",
     "prestart": "npm install",
+    "postinstall": "bower install",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "preupdate-webdriver": "npm install",
