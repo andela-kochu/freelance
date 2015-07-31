@@ -6,7 +6,8 @@
   "scripts": {
     "test2": "jasmine-node --autotest --config NODE_ENV test spec/routes.spec/*",
     "test": "jasmine-node --autotest --config NODE_ENV test spec/models.spec/",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "prestart": "npm install"
   },
   "repository": {
     "type": "git",

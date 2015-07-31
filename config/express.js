@@ -1,16 +1,16 @@
 'use strict';
 
 var express = require('express'),
-    session = require('express-session'),
-    morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    passport = require('passport');
+  session = require('express-session'),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  methodOverride = require('method-override'),
+  passport = require('passport');
 
 module.exports = function() {
   var app = express();
 
-  if(process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
   }
 
@@ -19,7 +19,9 @@ module.exports = function() {
     extended: true
   }));
   app.use(methodOverride());
-  app.use(session({ secret: 'keyboard cat' }));
+  app.use(session({
+    secret: 'keyboard cat'
+  }));
   app.use(passport.initialize());
   app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -29,9 +31,7 @@ module.exports = function() {
   });
   require('./passport')();
 
-  app.get('/', function(request, response) {
-    response.send("<br><br><br><center><h1>Freelance App by CHITECH</h1><br><a href='http://github.com/andela-kochu/freelance'>GITHUB REPO</a></center>");
-  });
+  app.use(express.static('./public/'));
 
   require('../routes/index')(app, passport);
   return app;

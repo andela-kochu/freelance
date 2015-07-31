@@ -1,0 +1,19 @@
+{
+  "globalstrict": true,
+  "globals": {
+    "angular": false,
+    "describe": false,
+    "it": false,
+    "expect": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "module": false,
+    "inject": false,
+    "jQuery": false,
+    "require": false,
+    "exports": false,
+    "console": false,
+    "Materialize": false,
+    "process": false
+  }
+}
