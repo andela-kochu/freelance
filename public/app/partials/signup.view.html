@@ -4,16 +4,16 @@
       <center><span class="md-title">Register Here</span></center>
     </md-subheader>
     <md-toolbar class="md-warn" layout-padding ng-hide="hidemsg">
-    <center>
-      <h3 class="md-title">{{msg}}</h3>
-    </center>
-  </md-toolbar>
+      <center>
+        <h3 class="md-title">{{msg}}</h3>
+      </center>
+    </md-toolbar>
     <md-card-content>
       <form name="signupForm">
         <md-input-container class="md-icon-float">
           <label>Name</label>
           <md-icon md-svg-src="assets/img/icons/ic_person_24px.svg" class="name"></md-icon>
-          <input name='name' ng-model="name" type="text"  ng-required="true">
+          <input name='name' ng-model="name" type="text" ng-required="true">
           <div ng-messages="signupForm.name.$error">
             <div ng-message="required">*</div>
           </div>
@@ -26,7 +26,7 @@
             <div ng-message="email">Type in a valid email address</div>
           </div>
         </md-input-container>
-        <md-input-container >
+        <md-input-container>
           <md-icon md-svg-src="assets/img/icons/ic_vpn_key_24px.svg" class="email"></md-icon>
           <input name='password' ng-model="password" type="password" placeholder="Password" ng-required="true">
           <div ng-messages="signupForm.password.$error">
@@ -45,25 +45,30 @@
         <div class="md-actions" layout="row" layout-align="center center">
           <md-button ng-disabled="signupForm.$invalid" flex ng-click="signUp()" class="md-raised md-primary md-hue-2">Register</md-button>
         </div>
+           <div layout layout-margin layout-align="center center">
+          <span style="text-align: center;">Have an account? &nbsp;<a href="#/signin">Sign In</a></span>
+        </div>
       </form>
       <md-progress-linear md-mode="indeterminate" ng-hide="hideProg" class="md-primary">
       </md-progress-linear>
     </md-card-content>
-        <div flex layout layout-align="center center">
-      <span>OR</span>
+    <hr width="50%">
+    <div flex layout layout-align="center center" style="margin-top: -15px;">
+      <div  style="margin: 0 auto;width: 10px;text-align:  center;padding: 0 10px;background-color:  white;">OR</div>
     </div>
     <md-card-content layout-align="center center">
       <div flex layout layout-align="center center">
         <md-button flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/linkedin" class="md-raised md-primary">
-          Login in with linkedin
+          <md-icon md-svg-src="assets/img/icons/linkedin.svg" class="s24"></md-icon>
+          &nbsp;          &nbsp;Login in with linkedin
         </md-button>
       </div>
       <div flex layout layout-align="center center">
-        <md-button flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/google" class="md-raised md-warn"> 
-          Login in with google
+        <md-button flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/google" class="md-raised md-warn">
+          <md-icon md-svg-src="assets/img/icons/google.svg" class="s24"></md-icon>
+          &nbsp;          &nbsp;Login in with google
           <!-- <md-icon md-svg-src="assets/img/icons/google-glass.svg" class="google"></md-icon>oogle -->
         </md-button>
-      </div>
       </div>
     </md-card-content>
   </md-card>
