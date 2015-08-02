@@ -10,14 +10,13 @@ exports.AuthCallback = function (strategy) {
   return function(req, res, next) {
     passport.authenticate(strategy, function(err, user) {
       if (err || !user) {
-        console.log(err)
-        return res.redirect('http://localhost:8000/#/signin');
+        return res.redirect('http://' + req.headers.host +'/#/signin');
       }
       var token = user.generateJWT();
       res.writeHead(301, {
         'token': token,
         'user': user.name,
-        'Location': 'http://localhost:8000/#/profile?token=' + token + '&user=' + user.name,
+        'Location': 'http://' + req.headers.host + '/#/profile?token=' + token + '&user=' + user.name,
          'Content-Type': 'text/plain'
         //add other headers here...
         });
