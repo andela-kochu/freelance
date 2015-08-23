@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .factory('UserService', ['$http', '$window', function($http, $window) {
-    var baseUrl = "http://freelance-app.herokuapp.com/api/v1";
+  .factory('UserService', ['$http', '$window', "baseUrl", function($http, $window, baseUrl) {
     var user = {
       userData: [],
       allUsers: []

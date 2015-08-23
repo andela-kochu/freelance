@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .factory('JobService', ['$http', function($http) {
-    var baseUrl = "http://freelance-app.herokuapp.com/api/v1";
+  .factory('JobService', ['$http', "baseUrl", function($http, baseUrl) {
     var jobObject = {
       jobs: [],
       userJobs: [],
