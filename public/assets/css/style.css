@@ -1,179 +1,183 @@
 * {
-  font-family: 'Roboto', sans-serif !important;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .landing_image {
-  background: url('http://i.huffpost.com/gen/1795420/images/o-JOB-INTERVIEW-facebook.jpg');
-  background-size: cover;
-  color: #fff;
-  background-repeat: repeat-x;
-  height: 650px;
+    background: url('http://i.huffpost.com/gen/1795420/images/o-JOB-INTERVIEW-facebook.jpg');
+    background-size: cover;
+    color: #fff;
+    background-repeat: repeat-x;
+    height: 650px;
 }
 
 .descript {
-  color: rgba(255, 255, 255, 0.80);
-  margin-top: 2em !important;
+    color: rgba(255, 255, 255, 0.80);
+    margin-top: 2em !important;
 }
 
 a {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .mlabel {
-  color: rgba(158, 158, 158, 1);
+    color: rgba(158, 158, 158, 1);
 }
 
 .footer {
-  position: fixed;
-  background-color:  black;
-  height: 2em;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  line-height: 2em;
+    position: fixed;
+    background-color: black;
+    height: 2em;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    line-height: 2em;
 }
 
 .footer a {
-  color: rgba(255, 255, 255, 0.62);
-  text-decoration: none;
+    color: rgba(255, 255, 255, 0.62);
+    text-decoration: none;
 }
 
 .linkedin {
-  background-color: #017BB6 !important;
-  color: white !important;
-  font-weight: bolder;
-  line-height: 2em;
+    background-color: #017BB6 !important;
+    color: white !important;
+    font-weight: bolder;
+    line-height: 2em;
 }
 
 .latest {
-  background-color: rgba(246, 246, 246, 0.92);
+    background-color: rgba(246, 246, 246, 0.92);
 }
+
 .facebook {
-  background-color: #3B579D !important;
-  color: white !important;
-  font-weight: bolder;
-  line-height: 2em;
+    background-color: #3B579D !important;
+    color: white !important;
+    font-weight: bolder;
+    line-height: 2em;
 }
 
 .google {
-  background-color: #3777E3 !important;
-  color: white !important;
-  font-weight: bolder;
-  line-height: 2em;
+    background-color: #3777E3 !important;
+    color: white !important;
+    font-weight: bolder;
+    line-height: 2em;
 }
 
 .subheader {
-  background-color: black;
-  color: white;
-  margin: 0em;
+    background-color: black;
+    color: white;
+    margin: 0em;
 }
 
 .comments {
-  padding: 1em;
-  background: black;
-  color: white;
-  font-size: 1.2em;
-  font-weight: bolder;
-  padding-left: 2em;
+    padding: 1em;
+    background: black;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bolder;
+    padding-left: 2em;
 }
 
 .submitcomments {
-  background-color: black !important;
-  color: white !important;
-  font-weight: bolder !important;
+    background-color: black !important;
+    color: white !important;
+    font-weight: bolder !important;
 }
 
 .description {
-  text-align: justify; !important;
+    text-align: justify;
+    !important;
 }
 
 .descriptionHome {
-  text-align: center !important;
+    text-align: center !important;
 }
 
-
 @media (min-width: 960px) {
-  .md-avatar {
-    border-radius: 90%;
-    border: 0.1em solid rgba(57, 106, 100, 0.07);
-    margin: 0.6em;
-  }
-  md-dialog {
-    min-width: 60% !important;
-    top: -5.5em !important;
-  }
-  .headline {
-    margin-top: 28em !important;
-    background-color: rgba(0, 0, 0, 0.46) !important;
-    padding: 1em !important;
-    margin-bottom: .5em;
-  }
+    .md-avatar {
+        border-radius: 90%;
+        border: 0.1em solid rgba(57, 106, 100, 0.07);
+        margin: 0.6em;
+    }
+    md-dialog {
+        min-width: 60% !important;
+        top: -5.5em !important;
+    }
+    .headline {
+        margin-top: 28em !important;
+        background-color: rgba(0, 0, 0, 0.46) !important;
+        padding: 1em !important;
+        margin-bottom: .5em;
+    }
 }
 
 @media (max-width: 960px) {
-  .md-avatar {
-    border-radius: 90%;
-    border: 1px solid #2E7D32;
-    margin-top: 2em;
-  }
-  md-dialog {
-    min-width: 70% !important;
-    padding: 0.2em !important;
-    top: -5.5em !important;
-  }
-  .headline {
-    margin-top: 3em !important;
-    background-color: rgba(0, 0, 0, 0.46) !important;
-    padding: .5em !important;
-  }
+    .md-avatar {
+        border-radius: 90%;
+        border: 1px solid #2E7D32;
+        margin-top: 2em;
+    }
+    md-dialog {
+        min-width: 70% !important;
+        padding: 0.2em !important;
+        top: -5.5em !important;
+    }
+    .headline {
+        margin-top: 3em !important;
+        background-color: rgba(0, 0, 0, 0.46) !important;
+        padding: .5em !important;
+    }
 }
 
 .mainBar {
-  position: fixed;
-  background-color:  black;
-  height: 2em;
-  top: 0;
-  width: 100%;
+    position: fixed;
+    background-color: black;
+    height: 2em;
+    top: 0;
+    width: 100%;
 }
 
 .first {
-  margin-top: 5em !important;
-  margin-bottom: 3em !important;
+    margin-top: 5em !important;
+    margin-bottom: 3em !important;
 }
 
 .customsub {
-  background: rgb(94, 135, 139) !important;
-  margin: 0px !important;
-  color: white !important;
-  font-weight: bolder !important;
-  font-size: 1.2em;
-  min-height: 2.5em;
+    background: rgb(94, 135, 139) !important;
+    margin: 0px !important;
+    color: white !important;
+    font-weight: bolder !important;
+    font-size: 1.2em;
+    min-height: 2.5em;
 }
 
 md-dialog .md-actions .md-button:last-child {
-  color: black !important;
+    color: black !important;
 }
 
 md-tabs {
-  width: 100% !important;
+    width: 100% !important;
 }
 
-md-grid-tile-footer, md-grid-tile-header {
-  /*background-color: rgba(0, 105, 92, 1) !important;*/
-  background-color: black !important;
+md-grid-tile-footer,
+md-grid-tile-header {
+    /*background-color: rgba(0, 105, 92, 1) !important;*/
+    background-color: black !important;
 }
 
 md-grid-tile {
-  transition: all 400ms ease-out 50ms;
+    transition: all 400ms ease-out 50ms;
 }
 
 .profile {
-  margin: 0px;
-  width: 100%;
-  height: 100%;
-  padding-top: 3em;
-  padding-left: 3em;
-  line-height: 3em;
-  font-size: larger;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    padding-top: 3em;
+    padding-left: 3em;
+    line-height: 3em;
+    font-size: larger;
 }
+
+
 }

@@ -121,8 +121,6 @@ angular.module('freelanceApp').config([
                 }
             });
         $urlRouterProvider.otherwise('home');
-        // use the HTML5 History API
-        $locationProvider.html5Mode(true);
 
         $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$window', '$timeout', '$rootScope',
             function($q, $location, $localStorage, $window, $timeout, $rootScope) {
