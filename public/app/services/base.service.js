@@ -1,4 +1,4 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .value('BaseUrl', "/api/v1");
+  .value('baseUrl', "/api/v1");
