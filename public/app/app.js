@@ -14,7 +14,7 @@ angular.module('freelanceApp').config([
     function($stateProvider, $urlRouterProvider, $httpProvider) {
       $stateProvider
         .state('home', {
-          url: '/home',
+          url: '/',
           templateUrl: 'app/partials/home.view.html',
           controller: 'homeCtrl',
           resolve: {

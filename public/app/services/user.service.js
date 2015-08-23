@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .factory('UserService', ['$http', '$window', "baseUrl", function($http, $window, baseUrl) {
+  .factory('UserService', ['$http', '$window', 'baseUrl', function($http, $window, baseUrl) {
     var user = {
       userData: [],
       allUsers: []

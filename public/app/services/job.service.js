@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('freelanceApp')
-  .factory('JobService', ['$http', "baseUrl", function($http, baseUrl) {
+  .factory('JobService', ['$http', 'baseUrl', function($http, baseUrl) {
     var jobObject = {
       jobs: [],
       userJobs: [],
