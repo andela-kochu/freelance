@@ -120,7 +120,7 @@ angular.module('freelanceApp').config([
                     }]
                 }
             });
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('/');
 
         $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$window', '$timeout', '$rootScope',
             function($q, $location, $localStorage, $window, $timeout, $rootScope) {
