@@ -1,0 +1,220 @@
+
+body {
+    color: #777777;
+    font: 400 16px/140% "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+a, a:hover, a:visited {
+    color: rgb(41, 129, 197);
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h5 a, h6 a, h1 a:visited, h2 a:visited, h3 a:visited, h5 a:visited, h6 a:visited, .feature {
+    color: 222222;
+    font-weight: bold;
+    text-transform: none;
+}
+.header_blurb {
+    font-size: 16px;
+    text-transform: capitalize;
+}
+h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+h1.title {
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 26px;
+    line-height: 140%;
+    margin-bottom: 20px;
+    padding: 0 0 15px;
+    text-align: left;
+}
+
+.category h1.title {
+	font-family: 'lobster';
+	text-align: center;
+	font-weight: 100;
+	font-size: 39px;
+	letter-spacing: -1px;
+	}
+h2.fulltitle, h1.fulltitle, .full-width h1 {
+    text-align: center;
+}
+.content h3 {
+    font-size: 24px;
+    line-height: 120%;
+    margin: 30px 0 15px;
+}
+.sidebar h3, .aside h3 {
+    font-size: 16px;
+    line-height: 120%;
+    padding: 10px 0;
+}
+h3#comments {
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+#comments-title {
+    font-size: 25px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+h4 {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 3px;
+}
+
+h4 a, h4 a:visited {
+	color: rgb(41, 129, 197);
+	}
+
+h5 {
+    font-size: 14px;
+    line-height: 130%;
+    margin-top: 10px;
+}
+.content h5 {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.tabs li a {
+    color: #111111;
+}
+.aside-container {
+    margin-right: 20px;
+}
+.aside {
+    background: none repeat scroll 0 0 transparent;
+    border-right: 3px solid rgba(155, 155, 155, 0.2);
+    display: block;
+    font-size: 13px;
+    padding: 10px 15px 10px 10px;
+}
+.blurb-maker h4, .hybrid h4, .module-container h4 {
+    font-size: 17px;
+}
+.superquote {
+    clear: both;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 34px;
+    margin: 40px 0;
+    padding-left: 20px;
+}
+.supertagline, .fp_caption {
+    clear: both;
+    color: #444444;
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 130%;
+    margin-top: 12px;
+    text-align: center;
+}
+.supertagline {
+    font-size: 18px;
+}
+.feature {
+    display: block;
+    font-size: 18px;
+    line-height: 120%;
+    padding: 24px 20px 0;
+}
+.feature span {
+    background: none repeat scroll 0 0 white;
+    padding: 10px;
+}
+.feature .button {
+    float: right;
+}
+.commentlist .comment-body .commentmetadata {
+    font-size: 10px;
+    font-style: italic;
+}
+.vcard a {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 300;
+}
+.tags a, #section-tophat, #section-footer span, #section-sub-footer, .date {
+    font-size: 12px;
+}
+#section-footer {
+    font-size: 14px;
+}
+.portfolio-filters span, .portfolio-view span {
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 21px;
+}
+label, legend {
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    margin-bottom: 6px;
+}
+
+
+.view-back span[data-icon] {
+    margin-top: 3px;
+}
+
+
+/* Menu Text - Light Skin Colors Below in Main Section*/
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	top: 29px; 
+}
+
+.sf-menu > li > a strong{ /* Top Level Link */
+	font-size: 13px;
+	font-family: 'Helvetica Neue', Arial, sans-serif !important;
+	font-weight: 600;	
+	color: #eee;
+	}
+	
+.sf-menu > li:hover a strong { color: #222; }
+
+/* Dropdown Links */
+.sf-menu ul { 
+	font-size: 14px;
+	color: #CCC;
+	}
+
+/* Light version of dropdown */
+.sf-menu.light ul li a { color: #555; }
+.sf-menu.light ul li:hover a{ color: #000 ; }
+.sf-menu.light ul { color: #333; }
+
+
+
+
+/* Tophat and Footer Text */
+#section-footer, #section-footer a, 
+#section-sub-footer{ 
+	color: #666 !important; 
+	}
+
+
+#section-footer h5{ 
+	color: #eee !important; 
+	font-weight: 100;
+	}
+
+#section-footer a{
+	text-decoration: none;
+	}
+
+h1, h2, h3, h4, h5, h6, th, tr, .portfolio-filters span, .portfolio-view span {
+    text-shadow: 1px 0 1px #FFFFFF;
+}
+#section-footer, #section-footer h5 {
+    text-shadow: 1px 0 1px #000000;
+}
+h5.no_image {
+    margin-top: 0;
+    padding-top: 0;
+}

@@ -1,45 +1,60 @@
-<md-content class="md-accent container first">
-  <div layout="row" class="landing_image">
-    <div flex class='headline'>
-      <h1 class='md-display-1' layout-align="center center">
-        <center>Great teams are built with great teamwork</center>
+<md-content class="md-accent container">
+  <div>
+    <img src="../../assets/img/bus_prof.jpg" du-parallax y="background" alt="" />
+    <div layout="column" layout-align="center center" flex class='headline'>
+      <h1 class='md-display-1 welcome-message' layout-align="center center">
+        <center>We help you get the job done!</center>
       </h1>
       <h3 class="md-subhead descript" hide-sm>
-        <center>Freelance Job Management System brings the <em>right</em> developers with the <em>right</em> skillset and attitude to your doorsteps</center>
+        <center>JobStack brings the <em>right</em> people with the <em>right</em> skillset and attitude to your doorsteps</center>
       </h3>
+      <md-button  ng-href="#/signin" md-ripple-size="full" class="md-raised md-primary get-started-btn">Get Started</md-button>
     </div>
   </div>
-  <div layout layout-align="center center" class="latest">
-    <md-card  layout-margin flex="90" flex-gt-sm="50" style="margin: 2em;">
-      <md-subheader class="customsub">
+  <div class="latest" layout="column" ayout-align="center center">
+      <md-subheader style="background-color: transparent; color: #002629; font-size: 20px;" >
           <center>
-            <span>Recent Jobs</span>
+            <span>Recently posted Jobs</span>
           </center>
       </md-subheader>
-      <md-list>
-        <md-list-item class="md-3-line" ng-repeat="job in recentJobs | filter:query | orderBy: '-created' | limitTo: 3" >
-          <div class="md-list-item-text"
-                layout="column" layout-align="center center"
-                layout-align-gt-md='end center'
-                style=" background: rgba(0, 0, 0, 0.01);">
+      <md-list class="latest-list" layout layout-sm="column" layout-align="center center">
+        <md-list-item style="width:100%" class="md-3-line" ng-repeat="job in recentJobs | filter:query | orderBy: '-created' | limitTo: 4" >
+          <md-card class="latest-card"
+                flex 
+                layout="column" 
+                layout-align="center center">
             <a ng-href="#/jobs/{{job.slug}}">
-              <h3 style="color: rgba(0, 0, 0, .87); font-weight: 600;">{{job.title | sentenceCase}}</h3>
+              <h5 style="color: rgba(0, 0, 0, .87); font-weight: 600;">{{job.title | sentenceCase}}</h5>
             </a>
-            <h4  style="color: rgb(99, 99, 99);">{{ job.tools | lowercase}}</h4>
-            <h4  style="color: rgb(55, 55, 57);">Posted:&nbsp;{{ job.created | date: medium}}</h4>
-          </div>
-         <md-divider ng-if="!$last"></md-divider>
-        </md-list-item>
+            <span class="latest-details" style="color: rgb(99, 99, 99);">{{ job.tools | lowercase}}</span class="latest-details">
+            <span class="latest-details">Posted:&nbsp;{{ job.created | date: medium}}</span class="latest-details">
+          </md-list-item>
+        </md-card>
       </md-list>
-    </md-card>
+      <md-button ng-href="#/jobs" flex-md="15" class="md-raised md-primary md-hue-2 browse-btn">Browse Jobs</md-button>
   </div>
-  <div layout layout-align="center center">
-    <md-content layout-padding style="height: 100%; padding: 24px;">
-      <h1 hide-sm layout layout-align="center center" layout-align="center center" class="md-headline">How Freelance App works</h1>
-      <strong hide-gt-sm style="font-size: 1.1em; text-align: center;"><span layout layout-align="center center">How Freelance App works</span></strong>
-      <p  layout layout-align="center center" class="descriptionHome">
-       Post any project you need done and receive bids from our talented freelancers within minutes. Compare their proposals and price, then select the best freelancer to complete your project. Easy!
-      </p>
-    </md-content>
+  <div class="how-it-works" layout="column" layout-align="center center">
+    <h1 hide-sm layout layout-align="center center" layout-align="center center" class="md-headline">How JobStack App works</h1>
+    <strong hide-gt-sm style="font-size: 1.1em; text-align: center;"><span layout layout-align="center center">How JobStack App works</span></strong>
+    <div style="width: 70%;">
+      <md-card layout="row" class="works-single "> 
+        <md-icon flex="20" md-svg-src="assets/img/icons/post.svg" class="s24"></md-icon>
+        <span flex="80" layout-align="center center" class="descriptionHome">
+          Place any job you need done on JobStack.
+        </span>
+      </md-card>
+      <md-card layout="row" class="works-single "> 
+        <md-icon flex="20" md-svg-src="assets/img/icons/naira.svg" class="s24"></md-icon>
+        <span flex="80" layout-align="center center" class="descriptionHome">
+          Receive bids from our talented freelancers within minutes and compare.
+        </span>
+      </md-card>
+      <md-card layout="row" class="works-single "> 
+        <md-icon flex="20" md-svg-src="assets/img/icons/xml.svg" class="s24"></md-icon>
+        <span flex="80" layout-align="center center" class="descriptionHome">
+          Select the best freelancer and get your job done. Easy!
+        </span>
+      </md-card>
+    </div>
   </div>
 </md-content>

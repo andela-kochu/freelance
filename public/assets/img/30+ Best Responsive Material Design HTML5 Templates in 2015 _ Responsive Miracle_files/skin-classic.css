@@ -1,0 +1,27 @@
+
+/* LIGHT VERSION of Dropdown (add the "light" class to .sf-menu to activate) */
+.sf-menu.light li li:hover, .sf-menu.light li li.sfHover, .sf-menu.light li li:focus, .sf-menu.light li li:hover, .sf-menu.light li li:active {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;	background: #DB4343;
+}
+
+.sf-menu.light li li {
+	background: rgb(255,255,255);  /* BG Color for the dropdown */
+	background: rgba(255,255,255,0.98);
+ -webkit-border-top: 1px solid rgba(255, 255, 255, 0.9); /* Top/Bottom border for the dropdown links */
+    -moz-border-top: 1px solid rgba(255, 255, 255, 0.9);
+      -o-border-top: 1px solid rgba(255, 255, 255, 0.9);
+		 border-top: 1px solid rgba(255, 255, 255, 0.9);
+	-webkit-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	   -moz-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	     -o-border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	  -webkit-border-left: 1px solid rgba(0, 0, 0, 0.1); /* Left/Right border for visibility */
+	     -moz-border-left: 1px solid rgba(0, 0, 0, 0.1);
+		   -o-border-left: 1px solid rgba(0, 0, 0, 0.1);
+			  border-left: 1px solid rgba(0, 0, 0, 0.1);
+	 -webkit-border-right: 1px solid rgba(0, 0, 0, 0.1);
+	    -moz-border-right: 1px solid rgba(0, 0, 0, 0.1);
+	      -o-border-right: 1px solid rgba(0, 0, 0, 0.1);
+			 border-right: 1px solid rgba(0, 0, 0, 0.1);
+}

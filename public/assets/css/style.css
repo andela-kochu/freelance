@@ -2,17 +2,36 @@
     font-family: 'Roboto', sans-serif !important;
 }
 
-.landing_image {
-    background: url('http://i.huffpost.com/gen/1795420/images/o-JOB-INTERVIEW-facebook.jpg');
-    background-size: cover;
-    color: #fff;
-    background-repeat: repeat-x;
-    height: 650px;
+.welcome-message {
+    width: 70%;
+    line-height: 70px;
+    font-size: 60px;
+    text-transform: UPPERCASE;
+    color: #004F56;
 }
 
 .descript {
-    color: rgba(255, 255, 255, 0.80);
-    margin-top: 2em !important;
+    color: #002225;
+    font-size: 20px;
+}
+
+.get-started-btn {
+    border: 1px solid rgb(0,131,143);
+    padding: 10px 40px;
+    margin: 20px 0;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.get-started-btn:hover {
+    background-color: #fff !important;
+    border: 1px solid rgb(0,131,143);
+    color:  rgb(0,131,143) !important;
+}
+
+.login-btn:hover {
+    background-color: #fff !important;
+    color:  rgb(0,131,143) !important;  
 }
 
 a {
@@ -24,13 +43,15 @@ a {
 }
 
 .footer {
-    position: fixed;
-    background-color: black;
-    height: 2em;
-    bottom: 0;
+    position: relative;
+    background-color: #111C1D;
+    height: 10em;
+    /* bottom: 0; */
     width: 100%;
-    color: white;
-    line-height: 2em;
+    color: #D2D0D0;
+    line-height: 10em;
+    /* left: 0; */
+    /* right: 0; */
 }
 
 .footer a {
@@ -46,7 +67,42 @@ a {
 }
 
 .latest {
-    background-color: rgba(246, 246, 246, 0.92);
+    position: relative;
+    background: #FdFdFd!important;
+}
+
+.latest-list {
+    margin: auto 40px;
+      line-height: 0;
+  -webkit-column-count: 5;
+  -webkit-column-gap:   0px;
+  -moz-column-count:    5;
+  -moz-column-gap:      0px;
+  column-count:         5;
+  column-gap:  
+}
+.latest-card {    
+    min-height: 200px;
+    padding: 5px;
+    text-align: center;
+    line-height: 25px;
+    background-color: #F7F7F7 !important;
+}
+.latest-details {
+    color: rgb(0,131,143);
+    padding: 5px;
+    font-size: 14px
+}
+
+.how-it-works {
+    position: relative;
+    background-color: #f8f8f8;
+}
+
+.works-single {
+    margin: 4% 0%;
+    padding: 3%;
+    min-height: 150px;
 }
 
 .facebook {
@@ -90,7 +146,9 @@ a {
 }
 
 .descriptionHome {
-    text-align: center !important;
+   font-size: 25px;
+   color: #00838F;
+   margin: auto;
 }
 
 @media (min-width: 960px) {
@@ -104,10 +162,11 @@ a {
         top: -5.5em !important;
     }
     .headline {
-        margin-top: 28em !important;
-        background-color: rgba(0, 0, 0, 0.46) !important;
+        position: relative;
+        margin-top: -30em;   
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.85) !important;
         padding: 1em !important;
-        margin-bottom: .5em;
     }
 }
 
@@ -122,10 +181,28 @@ a {
         padding: 0.2em !important;
         top: -5.5em !important;
     }
-    .headline {
-        margin-top: 3em !important;
-        background-color: rgba(0, 0, 0, 0.46) !important;
-        padding: .5em !important;
+   .headline {
+        position: relative;
+        margin-top: -30em;   
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        padding: 1em !important;
+    }
+    .welcome-message {
+        width: 100%;
+        line-height: 50px;
+        font-size: 40px;
+        text-transform: UPPERCASE;
+        color: #004F56;
+    }
+    .browse-btn {
+        width: 50%;
+    }
+    .descriptionHome {
+        font-size: 18px;
+        color: #00838F;
+        line-height: 28px;
+        margin: auto;
     }
 }
 
@@ -143,9 +220,9 @@ a {
 }
 
 .customsub {
-    background: rgb(94, 135, 139) !important;
+    background-color: rgb(0,131,143) !important;
     margin: 0px !important;
-    color: white !important;
+    color: #fff !important;
     font-weight: bolder !important;
     font-size: 1.2em;
     min-height: 2.5em;
@@ -179,5 +256,28 @@ md-grid-tile {
     font-size: larger;
 }
 
+.mybtn {
+    padding: 10px;
+    margin: 2px 0 0 0;
+    border-radius: 0px;
+}
 
+.browse-btn {
+    width: 20%;
+    margin: 15px auto;
+}
+
+#loading-bar .bar {
+  background: #2c3e50;
+  height: 10px !important;
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #2c3e50;
+  border-left-color: #2c3e50;
+}
+#loading-bar .peg {
+  -moz-box-shadow: #2c3e50 1px 0 6px 1px;
+  -ms-box-shadow: #2c3e50 1px 0 6px 1px;
+  -webkit-box-shadow: #2c3e50 1px 0 6px 1px;
+  box-shadow: #2c3e50 1px 0 6px 1px;
 }

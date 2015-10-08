@@ -5,7 +5,9 @@ angular.module('freelanceApp', ['ngMaterial',
     'ngStorage',
     'ngAnimate',
     'ngAria',
-    'ngMessages'
+    'ngMessages',
+    'duParallax',
+    'angular-loading-bar'
 ]);
 
 angular.module('freelanceApp').config([
@@ -13,7 +15,9 @@ angular.module('freelanceApp').config([
     '$urlRouterProvider', 
     '$httpProvider',
     '$locationProvider',
-    function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
+    'cfpLoadingBarProvider',
+    function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider, cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = false;
         $stateProvider
             .state('home', {
                 url: '/',

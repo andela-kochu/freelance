@@ -53,23 +53,16 @@
       </md-progress-linear>
     </md-card-content>
     <hr width="50%">
-    <div flex layout layout-align="center center" style="margin-top: -15px;">
-      <div  style="margin: 0 auto;width: 10px;text-align:  center;padding: 0 10px;background-color:  white;">OR</div>
+    <div flex layout layout-align="center center" style="margin-top: -20px; margin-bottom: 10px;">
+      <div style="margin: 0 auto;width: 10px;text-align:  center;padding: 0 20px;background-color:  white;">OR</div>
     </div>
-    <md-card-content layout-align="center center">
-      <div flex layout layout-align="center center">
-        <md-button flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/linkedin" class="md-raised md-primary">
-          <md-icon md-svg-src="assets/img/icons/linkedin.svg" class="s24"></md-icon>
-          &nbsp;          &nbsp;Login in with linkedin
-        </md-button>
-      </div>
-      <div flex layout layout-align="center center">
-        <md-button flex ng-href="https://freelance-app.herokuapp.com/api/v1/auth/google" class="md-raised md-warn">
-          <md-icon md-svg-src="assets/img/icons/google.svg" class="s24"></md-icon>
-          &nbsp;          &nbsp;Login in with google
-          <!-- <md-icon md-svg-src="assets/img/icons/google-glass.svg" class="google"></md-icon>oogle -->
-        </md-button>
-      </div>
-    </md-card-content>
+    <md-button flex ng-href="/api/v1/auth/linkedin" class="md-raised md-primary mybtn">
+      <md-icon md-svg-src="assets/img/icons/linkedin.svg" class="s24"></md-icon>
+      &nbsp; &nbsp;Login in with linkedin
+    </md-button>
+    <md-button flex ng-href="/api/v1/auth/google" class="md-raised md-warn mybtn">
+      <md-icon md-svg-src="assets/img/icons/google.svg" class="s24"></md-icon>
+      &nbsp; &nbsp;Login in with google
+    </md-button>
   </md-card>
 </md-content>

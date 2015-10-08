@@ -2,8 +2,10 @@
 
 angular.module('freelanceApp')
   .controller('homeCtrl', ['$scope', '$rootScope', 'sideNav','AuthService', 'JobService',
-              '$location', '$localStorage', '$window', '$timeout', 'ToastService', function($scope, $rootScope, sideNav,
-               AuthService, JobService, $location,  $localStorage, $window, $timeout, ToastService) {
+              '$location', '$localStorage', '$window', '$timeout', 'ToastService', 'parallaxHelper', function($scope, $rootScope, sideNav,
+               AuthService, JobService, $location,  $localStorage, $window, $timeout, ToastService, parallaxHelper) {
+
+     $scope.background = parallaxHelper.createAnimator(-0.35, 450, -450);
 
     $scope.close = sideNav.close;
     $scope.toggle = sideNav.buildToggler;
