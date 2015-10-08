@@ -13,9 +13,6 @@
         </md-select>
       </div>
     </div>
-    <md-subheader class="md-primary customsub">
-      Job list
-    </md-subheader>
     <md-content flex style="height: 20%;">
     <md-list flex>
       <md-list-item ng-repeat="job in filteredJobs = (jobs | filter: query | orderBy: orderProp)">

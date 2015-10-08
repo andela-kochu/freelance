@@ -220,9 +220,10 @@ a {
 }
 
 .customsub {
-    background-color: rgb(0,131,143) !important;
+    background-color: rgb(255, 255, 255) !important;
     margin: 0px !important;
-    color: #fff !important;
+    border-bottom: 1px solid;
+    color: #00838F !important;
     font-weight: bolder !important;
     font-size: 1.2em;
     min-height: 2.5em;
